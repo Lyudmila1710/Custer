@@ -1,0 +1,57 @@
+# Translation of Themes - Signify Dark in Russian
+# This file is distributed under the same license as the Themes - Signify Dark package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-06-07 07:16:10+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: ru\n"
+"Project-Id-Version: Themes - Signify Dark\n"
+
+#. Description of the theme
+#, gp-priority: high
+msgid "Signify Dark is a free dark Blog and Corporate WordPress theme that is trendy, responsive, and dynamic. It is a child theme of Signify, a popular Corporate WordPress theme. Signify Dark inherits all the premium-like features and functionalities from its parent theme. However, the child theme comes with a dark color scheme. Dark color schemes are quite popular and trending nowadays on top charts as it is considered to be a bold design trend and also they’re easy on the eye. If you love dark theme for your blog or corporate site, Signify Dark is the one to go for. You will find features like Featured Content, Slider Options, Portfolio, Testimonials, Services, Hero Content, Header Media, Menu Options, and more in Signify Dark. With the awesome package full of features and a dark color scheme, Signify Dark will represent your site in an aesthetic manner. Your blog/corporate site will look absolutely gorgeous and professional across all screen sizes as well. Official Support Forum: https://themepalace.com/support-forum/ Full Demo: https://wenthemes.com/theme-demos/?demo=signify-dark"
+msgstr "Signify Dark — бесплатная темная тема WordPress для блогов и компаний, модная, отзывчивая и динамичная. Это дочерняя тема Signify, популярной корпоративной темы WordPress. Signify Dark наследует все функции премиум-класса от своей родительской темы. Однако дочерняя тема имеет темную цветовую схему. Темные цветовые схемы довольно популярны и находятся в тренде в настоящее время в топ-чартах, поскольку это считается смелой тенденцией дизайна, а также они приятны для глаз. Если вам нравится темная тема для вашего блога или корпоративного сайта, Signify Dark — это то, что вам нужно. В Signify Dark вы найдете такие функции, как «Избранный контент», «Параметры слайдера», «Портфолио», «Отзывы», «Сервисы», «Главный контент», «Мультимедиа заголовка», «Параметры меню» и многое другое. С потрясающим набором функций и темной цветовой схемой Signify Dark будет эстетически представлять ваш сайт. Ваш блог/корпоративный сайт будет выглядеть абсолютно великолепно и профессионально на всех размерах экрана. Официальный форум поддержки: https://themepalace.com/support-forum/ Полная демонстрация: https://wenthemes.com/theme-demos/?demo=signify-dark"
+
+#. Theme Name of the theme
+#, gp-priority: high
+msgid "Signify Dark"
+msgstr "Signify Dark"
+
+#: functions.php:110
+msgid "Select Layout"
+msgstr "Выбрать макет"
+
+#: functions.php:108
+msgid "4 columns"
+msgstr "4 столбца"
+
+#: functions.php:107
+msgid "3 columns"
+msgstr "3 столбца"
+
+#: functions.php:106
+msgid "2 columns"
+msgstr "2 столбца"
+
+#: functions.php:105
+msgid "1 column"
+msgstr "1 столбец"
+
+#. Theme URI of the theme
+#, gp-priority: low
+msgid "https://wenthemes.com/item/wordpress-themes/signify-dark/"
+msgstr "https://wenthemes.com/item/wordpress-themes/signify-dark/"
+
+#. Author URI of the theme
+#, gp-priority: low
+msgid "https://wenthemes.com/"
+msgstr "https://wenthemes.com/"
+
+#. Author of the theme
+#, gp-priority: low
+msgid "WEN Themes"
+msgstr "WEN Themes"

@@ -1,0 +1,7212 @@
+/**
+Theme Name: Hodophile
+Theme URI: https://themepalace.com/downloads/hodophile/
+Author: themepalace
+Author URI: https://themepalace.com
+Version: 1.0.1
+Requires PHP: 7.4
+Tested up to: 6.2
+Requires at least: 5.0
+Text Domain: hodophile
+Description: Hodophile is a clean and modern mobile responsive and super customizable WordPress theme built for travel agencies, tour planners, and tourist guides. The theme is a finely crafted versatile WordPress theme with a bunch of pre-made demo styles and content. You can quickly launch your travel website within a few clicks. Furthermore, the theme is integrated with powerful plugins like the WP Travel plugin. WP travel plugin allows you to add unlimited customized itineraries, tours, and travel packages along with travel booking and receiving payments. Furthermore, You can display the needed information about your services and packages cleanly and attractively, and the users can book the travel package effortlessly. Moreover, the theme is translation-ready and also cross-browser compatible.
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Tags: translation-ready, custom-background, theme-options, custom-menu, threaded-comments, featured-images, footer-widgets, editor-style, right-sidebar, full-width-template, two-columns, grid-layout, custom-colors, custom-header, custom-logo, featured-image-header, blog, portfolio, entertainment
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Preloader
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Layouts and Titles
+# Media
+	## Captions
+	## Galleries
+# Social Icons
+# Breadcrumb List
+# Blog/Archive/Single
+# Footer
+# Font Family Options
+# Responsive
+
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#loader {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	vertical-align: middle;
+	background-color: #fff;
+	position:fixed;
+	display: table;
+	width: 100%;
+	top:0;
+	height: 100%;
+	min-height: 100%;
+	z-index:9999;
+}
+
+.loader-container {
+	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+	z-index: 12;
+	text-align:center;
+	text-transform: uppercase;
+}
+
+.loader-container svg {
+	width: 70px;
+	height: 70px;
+	fill: #FC5B31;
+	-webkit-animation: rotating 2s linear infinite;
+	-moz-animation: rotating 2s linear infinite;
+	-ms-animation: rotating 2s linear infinite;
+	-o-animation: rotating 2s linear infinite;
+	animation: rotating 2s linear infinite;
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.blog-loader {
+    text-align: center;
+    margin-top: 50px;
+}
+.blog-loader svg {
+    width: 30px;
+    height: 30px;
+}
+#LBloadmore svg.latest-posts-loader,
+.blog-loader svg {
+    margin-left: 15px;
+    animation: infinitepreloader 1.5s  infinite ease-in-out;
+}
+@keyframes infinitepreloader {
+	100%{transform: rotate(180deg);}
+}
+
+#preloader {
+	position:relative;
+	margin:auto;
+	width:100px;
+}
+
+#preloader span {
+	display:block;
+	bottom:0px;
+	width: 9px;
+	height: 5px;
+	background:#fff;
+	position:absolute;
+	animation: preloader 1.5s  infinite ease-in-out;
+}
+ 
+#preloader span:nth-child(2) {
+	left:11px;
+	animation-delay: .2s;
+}
+#preloader span:nth-child(3) {
+	left:22px;
+	animation-delay: .4s;
+}
+#preloader span:nth-child(4) {
+	left:33px;
+	animation-delay: .6s;
+}
+#preloader span:nth-child(5) {
+	left:44px;
+	animation-delay: .8s;
+}
+
+@keyframes preloader {
+    0% {height:5px;transform:translateY(0px);background: #FC5B31;}
+    25% {height:30px;transform:translateY(15px);background: #FC5B31;}
+    50% {height:5px;transform:translateY(0px);background: #FC5B31;}
+    100% {height:5px;transform:translateY(0px);background: #FC5B31;}
+}
+
+.backtotop {
+    background-color: #FC5B31;
+    z-index: 300;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    position: fixed;
+    bottom: -100px;
+    right: 25px;
+    cursor: pointer;
+    -webkit-transition: all .7s ease-in-out;
+    -moz-transition: all .7s ease-in-out;
+    -o-transition: all .7s ease-in-out;
+    -ms-transition: all .7s ease-in-out;
+    transition: all .7s ease-in-out;
+    color: #fff;
+}
+.backtotop:hover {
+	background-color: #000;
+}
+.backtotop svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: #fff;
+}
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:     100%;
+}
+
+body {
+	margin: 0;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 400;
+}
+
+#page {
+    position: relative;
+}
+
+.boxed-layout,
+.frame-layout {
+    background-image: url('assets/images/pattern.png');
+}
+
+#content {
+    position: relative;
+    /*overflow-x: hidden;*/
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+[hidden],
+template {
+	display: none;
+}
+
+a {
+	background-color: transparent;
+}
+
+a:active,
+a:hover {
+	outline: 0;
+}
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+dfn {
+	font-style: italic;
+}
+
+h1 {
+	font-size: 52px;
+}
+
+h2 {
+	font-size: 42px;
+}
+
+h3 {
+	font-size: 26px;
+}
+
+h4 {
+	font-size: 20px;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	color: #000;
+	margin: 16px 0;
+	line-height: 1.35;
+	font-weight: 600;
+	font-family: 'Andada Pro', serif;
+}
+
+h1 {
+	margin: 0 0 16px;
+}
+
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+img {
+	border: 0;
+}
+
+figure {
+	margin: 1em 40px;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+}
+
+pre {
+	overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+}
+
+button {
+	overflow: visible;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input {
+	line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+	border: 0;
+	padding: 0;
+}
+
+textarea {
+	overflow: auto;
+}
+
+optgroup {
+	font-weight: bold;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+tbody {
+    text-align: left;
+}
+tr {
+    border: 1px solid #e4e4e4;
+}
+td,
+th {
+	padding: 5px;
+    font-weight: 400;
+}
+
+th {
+	color: #000;
+}
+
+td#next {
+    text-align: right;
+}
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {
+	color: #000;
+	font-size: 18px;
+	line-height: 28px;
+    word-wrap: break-word;
+}
+p {
+	margin: 0 0 1em;
+	line-height: 33px;
+}
+p:last-child {
+	margin-bottom: 0;
+}
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5em;
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	background: #eee;
+	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-size: 15px;
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code,
+kbd,
+tt,
+var {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+mark,
+ins {
+    text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+	background: #EFEFEF; /* Fallback for when there is no custom background color defined. */
+    overflow-x: hidden;
+}
+
+blockquote {
+    padding: 0 60px 0 40px;
+    font-size: 18px;
+    line-height: 35px;
+    font-weight: 300;
+    position: relative;
+    margin: 0 0 21px;
+}
+blockquote.alignright {
+    padding-right: 0;
+    margin-bottom: 14px;
+}
+
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+ul,
+ol {
+	margin: 0 0 21px;
+    padding-left: 1.5em;
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+li > ul,
+li > ol {
+	margin-bottom: 0;
+	margin-left: 0.5em;
+}
+
+dt {
+	font-weight: bold;
+    margin-bottom: 1em;
+}
+
+dd {
+	margin: 0 1.5em 1.5em;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+	vertical-align: middle;
+}
+
+figure {
+	margin: 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+table {
+	margin: 0 0 1.5em;
+	width: 100%;
+}
+
+table#wp-calendar {
+    display: table;
+    width: 100%;
+    overflow: auto;
+}
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+button,
+.wp-travel.trip-headline-wrapper .wptravel-book-your-trip,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	padding: 11px 30px;
+    display: inline-block;
+    text-align: center;
+    background-color: #FC5B31;
+    color: #fff;
+    border: 1px solid #FC5B31;
+    text-decoration: none;
+    font-weight: 500;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.wp-travel-form-field input[type="submit"]:hover,
+.wp-travel.trip-headline-wrapper .wptravel-book-your-trip:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	background-color: #000;
+	border: 1px solid #fff;
+	color: #fff;
+}
+
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+	background-color: #000;
+	color: #fff;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	color: #666;
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 10px 20px;
+	background-color: #eee;
+}
+
+select {
+	border: 1px solid #ccc;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	color: #000;
+	outline: thin dotted;
+}
+
+p.form-submit {
+    clear: both;
+    display: inline-block;
+    position: relative;
+}
+.comment-notes {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+#respond label {
+    color: #273238;
+    margin-bottom: 5px;
+    display: block;
+}
+#commentform p {    
+    margin-bottom: 21px;
+}
+.customize-support #commentform p.comment-form-comment {
+    margin-bottom: 0;
+}
+#commentform p.form-submit {
+	margin: 21px 0 0;
+}
+#comments {
+    margin: 60px 0 0;
+}
+#respond {
+    margin-top: 50px;
+}
+#respond .comment-form-cookies-consent input[type="checkbox"], 
+.comment-form-cookies-consent input[type="checkbox"] {
+    width: auto;
+    float: left;
+    height: auto;
+    min-height: auto;
+    margin-right: 10px;
+}
+#respond .comment-form-cookies-consent label, 
+.comment-form-cookies-consent label {
+    display: table;
+    margin: 0;
+    line-height: 1;
+}
+.comment-form-cookies-consent {
+    clear: both;
+    margin-top: 15px;
+    display: inline-block;
+    width: 100%;
+}
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Links
+--------------------------------------------------------------*/
+a {
+	color: #000;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: #FC5B31;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+#masthead {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    background-color: transparent;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.site-branding {
+    float: left;
+    padding: 20px 0;
+    min-height: 75px;
+}
+.site-title {
+    font-size: 32px;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.site-title a {
+    color: #000;
+    text-decoration: none;
+}
+.site-title a:hover,
+.site-title a:focus {
+    color: #FC5B31;
+}
+.site-description {
+    margin: 0;
+    color: #666;
+}
+.site-logo {
+    margin-right: 20px;
+}
+.site-logo img {
+    /*max-height: 75px;*/
+    width: auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.main-navigation {
+	display: block;
+    position: relative;
+    float: right;
+}
+.main-navigation ul.nav-menu li:hover > a,
+.main-navigation ul.nav-menu li:focus > a {
+    color: #FC5B31;
+}
+.main-navigation ul.nav-menu li:hover > svg,
+.main-navigation ul.nav-menu li:focus > svg,
+.main-navigation li.menu-item-has-children:hover > a > svg,
+.main-navigation li.menu-item-has-children > a:hover > svg,
+.main-navigation li.menu-item-has-children > a:focus > svg,
+.main-navigation ul.nav-menu > li.current-menu-item > a > svg {
+    fill: #FC5B31;
+}
+.main-navigation ul ul {
+    background-color: #fff;
+    text-align: left;
+    padding: 0;
+}
+.main-navigation ul.sub-menu li a {
+    padding: 8px 15px;
+    color: #000;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid rgba(238, 238, 238, 0.5);
+}
+.main-navigation ul.sub-menu a:after {
+	float: right;
+}
+.main-navigation ul {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.main-navigation li {
+	position: relative;
+}
+
+.main-navigation ul.nav-menu > li > a {
+    padding: 8px 0;
+    color: #000;
+}
+.main-navigation ul.nav-menu > li:not(:last-child) {
+	padding: 0 15px;
+}
+.main-navigation form.search-form input {
+    background-color: #000;
+    border-color: #000;
+    color: #000;
+    font-weight: 400;
+}
+.main-navigation ul.nav-menu > li > a.search:hover svg.icon-search,
+.main-navigation ul.nav-menu > li > a.search:focus svg.icon-search,
+.main-navigation li.search-menu a:hover svg,
+.main-navigation li.search-menu a:focus svg,
+.main-navigation li.search-menu a.search-active svg {
+	fill: #FC5B31;
+}
+.main-navigation a:hover,
+.main-navigation a:focus,
+.main-navigation ul.nav-menu > li > a:hover,
+.main-navigation ul.nav-menu > li > a:focus {
+    color: #FC5B31;
+}
+.main-navigation a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    position: relative;
+    font-weight: 400;
+    font-family: 'Andada Pro', serif;
+    font-size: 18px;
+}
+.main-navigation ul ul {
+	float: left;
+	position: absolute;
+	top: 100%;
+	left: -999em;
+	z-index: 99999;
+}
+.main-navigation ul ul ul {
+	left: -999em;
+	top: 0;
+}
+.main-navigation ul ul a {
+	width: 225px;
+}
+
+.main-navigation .current_page_item > a,
+.main-navigation .current-menu-item > a,
+.main-navigation .current_page_ancestor > a,
+.main-navigation .current-menu-ancestor > a {
+	color: #000;
+}
+.main-navigation .count {
+    float: right;
+    background-color: #FC5B31;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 1.1;
+    margin-top: 5px;
+}
+.main-navigation .search-form .search-submit:hover,
+.main-navigation .search-form .search-submit:focus {
+    background-color: #FC5B31;
+}
+.main-navigation .search-form .search-submit:hover svg,
+.main-navigation .search-form .search-submit:focus svg {
+    fill: #fff;
+}
+#masthead .main-navigation .social-icons ul li a:hover svg {
+    fill: #fff;
+}
+.main-navigation .social-icons ul li a {
+    width: 40px;
+    padding: 0;
+}
+#masthead .main-navigation .social-icons ul li a svg {
+    transform: none;
+}
+.main-navigation .header-button ul,
+.fourth-design .social-menu ul,
+.second-design .login-register ul {
+    position: relative;
+    float: none;
+    left: auto;
+    background-color: transparent;
+    z-index: 1;
+    display: inline-block;
+    top: auto;
+}
+.main-navigation .header-button ul li {
+	display: inline-block;
+}
+.main-navigation .header-button ul li a {
+	text-transform: none;
+	letter-spacing: 0;
+}
+.main-navigation .header-button ul li:not(:last-child) {
+	padding-right: 15px; 	
+}
+.main-navigation .header-button ul li:not(:last-child) a {
+	background-color: unset;
+	padding: 0; 
+	min-width: unset;
+	border: none;
+}
+.main-navigation .header-button ul li:not(:last-child) a:hover,
+.main-navigation .header-button ul li:not(:last-child) a:focus {
+	color: #FC5B31;
+}
+.main-navigation .header-button ul li:nth-child(2) a {
+	min-width: unset;
+	padding: 7px 21px;
+	background-color: transparent;
+	border-color: #2B2B2D;
+}
+.main-navigation .header-button ul li:nth-child(2) a:hover,
+.main-navigation .header-button ul li:nth-child(2) a:focus {
+	color: #fff;
+	background-color: #FC5B31;
+	border-color: #FC5B31;
+}
+.main-navigation .header-button ul a {
+	width: unset;
+	color: #fff;
+}
+form.search-form {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+.main-navigation form.search-form {
+    min-width: 320px;
+}
+input.search-field {
+    height: 45px;
+    border-radius: 0;
+    padding: 0 50px 0 15px;
+    width: 100%;
+}
+.main-navigation svg.icon-close {
+    display: none;
+}
+svg {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+svg.icon-search,
+svg.icon-close {
+    width: 15px;
+    height: 15px;
+}
+.main-navigation svg.icon-down {
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    fill: #000;
+}
+.main-navigation .menu-item-has-children svg.icon-down {
+	fill: #fff;
+}
+.main-navigation ul.sub-menu li a:hover,
+.main-navigation ul.sub-menu li a:focus{
+	color: #FC5B31 !important;
+}
+
+.main-navigation ul.sub-menu li a:hover svg,
+.main-navigation ul.sub-menu li a:focus svg{
+	fill: #FC5B31 !important;
+}
+.main-navigation .sub-menu svg {
+    width: 12px;
+    height: 12px;
+    fill: #000;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%) rotate(-180deg);
+    -moz-transform: translateY(-50%) rotate(-180deg);
+    -ms-transform: translateY(-50%) rotate(-180deg);
+    -o-transform: translateY(-50%) rotate(-180deg);
+    transform: translateY(-50%) rotate(-180deg);
+}
+.menu-toggle {
+    border-radius: 0;
+    font-size: 16px;
+    display: block;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    padding: 10px 25px;
+    margin: 20px 0;
+    min-width: 135px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-toggle:hover,
+.menu-toggle:focus {
+	background-color: #FC5B31;
+}
+.main-navigation .menu-toggle svg {
+	fill: #fff;
+	margin-right: 10px;
+}
+.menu-label {
+    color: #fff;
+}
+svg.icon-menu {
+    fill: #000;
+    width: 30px;
+    height: 30px;
+    vertical-align: baseline;
+}
+.menu-open svg.icon-menu {
+    display: none;
+}
+button.dropdown-toggle {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    width: 45px;
+    height: 45px;
+    line-height: 50px;
+    margin: 5px;
+    border-radius: 0;
+    background-color: #000;
+}
+.main-navigation .dropdown-toggle.active > svg {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+#masthead .main-navigation .search-active .icon-search {
+    display: none;
+}
+#masthead .main-navigation .search-active svg.icon-close {
+    display: inline-block;
+}
+.menu-overlay {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+.menu-overlay.active {
+    background-color: #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 1;
+}
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
+	margin: 50px 0 0;
+	overflow: hidden;
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+	float: left;
+	width: 50%;
+	position: relative;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+	position: relative;
+}
+.post-navigation a, 
+.posts-navigation a {
+    font-weight: 400;
+    color: #FC5B31;
+    text-decoration: none;
+}
+.navigation.pagination a {
+    text-decoration: none;
+}
+.post-navigation a:hover, 
+.posts-navigation a:hover,
+.post-navigation a:focus, 
+.posts-navigation a:focus {
+	color: #000;
+}
+.post-navigation, 
+.posts-navigation {
+    padding: 0;
+    position: relative;
+    clear: both;
+}
+.pagination .page-numbers,
+.pagination .page-numbers.dots:hover,
+.pagination .page-numbers.dots:focus,
+.pagination .page-numbers.prev,
+.pagination .page-numbers.next {
+    text-align: center;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 7px;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+.pagination .page-numbers.current,
+.pagination .page-numbers:hover,
+.pagination .page-numbers:focus {
+    color: #fff;
+    border-color: #FC5B31;
+    background-color: #FC5B31;
+}
+.pagination .prev.page-numbers img {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+.pagination img {
+	opacity: 0.4;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.pagination a:hover img,
+.pagination a:focus img {
+	opacity: 1;
+	-webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+.navigation .nav-previous svg {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.navigation .nav-next svg {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.navigation.post-navigation, 
+.navigation.posts-navigation {
+    background-color: #fff;
+}
+.navigation.post-navigation .nav-previous, 
+.navigation.posts-navigation .nav-previous,
+.navigation.post-navigation .nav-next, 
+.navigation.posts-navigation .nav-next {
+	padding: 30px;
+}
+.navigation.post-navigation a,
+.navigation.posts-navigation a {
+	font-size: 18px;
+	color: #000;
+}
+.navigation.post-navigation a:hover,
+.navigation.posts-navigation a:hover,
+.navigation.post-navigation a:focus,
+.navigation.posts-navigation a:focus {
+	color: #FC5B31;
+}
+.navigation.post-navigation a:hover svg,
+.navigation.posts-navigation a:hover svg,
+.navigation.post-navigation a:focus svg,
+.navigation.posts-navigation a:focus svg {
+	fill: #FC5B31;
+}
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after,
+.footer-widgets-area:before,
+.footer-widgets-area:after,
+.wrapper:before,
+.wrapper:after {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after,
+.footer-widgets-area:before,
+.footer-widgets-area:after,
+.wrapper:before,
+.wrapper:after {
+	clear: both;
+}
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widget {
+	margin: 0 0 1.3em;
+}
+.widget:last-child {
+    margin-bottom: 0;
+}
+
+#colophon .widget {
+	margin: 0 0 40px;
+}
+
+#colophon .widget.widget_text {
+	margin-bottom: 20px;
+}
+
+#colophon .widget:last-child {
+    margin-bottom: 0;
+}
+
+#secondary .widget {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 50px;
+}
+
+#secondary .widget:last-child {
+    margin-bottom: 0;
+}
+
+/* Make sure select elements fit in widgets. */
+.widget select {
+	max-width: 100%;
+    background-color: #f6f6f6;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    max-width: 300px;
+}
+.widget select:focus {
+    outline: thin dotted;
+}
+
+.widget input {
+    height: 40px;
+    border-radius: 0;
+    padding: 0 15px;
+    border: none;
+}
+
+form.search-form button.search-submit {
+	padding: 0;
+    height: 45px;
+    line-height: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    width: 45px;
+    border-radius: 0;
+}
+form.search-form button.search-submit svg {
+	fill: #fff;
+}
+.widget_search form.search-form button.search-submit {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    line-height: 1;
+}
+.widget_search form.search-form button.search-submit svg {
+	fill: #fff;
+	width: 16px;
+    height: 16px;
+}
+.widget_search form.search-form button.search-submit:hover svg,
+.widget_search form.search-form button.search-submit:focus svg {
+	fill: #FC5B31;
+}
+.widget_search form.search-form input {
+	border: none;
+}
+.widget_search form.search-form input {
+    padding: 0 40px 0 15px;
+    height: 50px;
+    background-color: #f5f5f3;
+}
+form.search-form {
+    position: relative;
+}
+
+form.search-form input {
+    width: 100%;
+    padding: 0 40px 0 15px;
+    font-weight: 300;
+}
+
+#wp-calendar tbody td {
+    text-align: center;
+}
+
+#wp-calendar caption {
+    margin-bottom: 15px;
+}
+
+#secondary .widget-subtitle {
+    color: #000;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+#secondary .widget-title,
+#secondary h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.widget li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.right-sidebar #secondary, 
+.left-sidebar #secondary {
+	margin-top: 50px;
+}
+#secondary {
+    position: relative;
+    overflow: hidden;
+}
+#secondary .widget_search form.search-form input {
+	background-color: #fff;
+	color: #000;
+}
+#secondary ul {
+    margin: 0;
+}
+#secondary ul li a:hover,
+#secondary ul li a:focus {
+	color: #FC5B31;
+}
+#secondary ul li a {
+	text-decoration: none;
+}
+#secondary .widget ul {
+	margin: 0;
+	padding: 0;
+}
+#secondary .widget ul li:not(:last-child) {
+    margin-bottom: 20px;
+}
+#secondary .widget ul li {
+	list-style: none;
+}
+.widget_latest_posts li {
+    display: flex;
+    align-items: center;
+}
+.widget_latest_posts .featured-image {
+    float: left;
+    margin-right: 20px;
+}
+.widget_latest_posts .featured-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+.widget_latest_posts .entry-container h2 {
+	font-size: 16px;
+    margin: 5px 0 0;
+}
+#secondary .widget.widget_popular_news li {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+#secondary .widget.widget_popular_news li.has-post-thumbnail:not(:last-child), 
+#secondary .widget_editor_choice li.has-post-thumbnail:not(:last-child) {
+    margin-bottom: 30px;
+}
+#secondary .widget.widget_popular_news .featured-image {
+    margin-right: 20px;
+    width: 90px;
+    height: 90px;
+    float: left;
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+#secondary .widget.widget_popular_news .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#secondary .widget.widget_popular_news .entry-container {
+    display: table;
+    margin-top: 0px;
+}
+#secondary .entry-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+.widget.widget_editor_choice li .featured-image,
+.widget.widget_media_image img {
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+.widget.widget_editor_choice li:first-child .featured-image {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    float: none;
+    margin-bottom: 20px;
+}
+.widget.widget_editor_choice li .featured-image img {
+    width: 100%;
+    object-fit: cover;
+}
+#secondary .widget.widget_editor_choice li:first-child .entry-title {
+    font-size: 28px;
+    margin-top: 15px;
+}
+.widget_editor_choice .entry-container {
+    display: table;
+}
+#main-post-wrapper {
+    background: rgb(238,234,232);
+    background: -moz-linear-gradient(left, rgba(238,234,232,1) 0%, rgba(236,233,237,1) 9%, rgba(237,233,238,1) 27%, rgba(239,234,236,1) 51%, rgba(228,225,221,1) 58%, rgba(241,233,234,1) 66%, rgba(243,232,232,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(238,234,232,1) 0%,rgba(236,233,237,1) 9%,rgba(237,233,238,1) 27%,rgba(239,234,236,1) 51%,rgba(228,225,221,1) 58%,rgba(241,233,234,1) 66%,rgba(243,232,232,1) 100%);
+    background: linear-gradient(to right, rgba(238,234,232,1) 0%,rgba(236,233,237,1) 9%,rgba(237,233,238,1) 27%,rgba(239,234,236,1) 51%,rgba(228,225,221,1) 58%,rgba(241,233,234,1) 66%,rgba(243,232,232,1) 100%);
+}
+#secondary .widget_editor_choice li.has-post-thumbnail:before, 
+#secondary .widget_editor_choice li.has-post-thumbnail:after {
+    clear: left;
+    display: table;
+    width: 100%;
+    content: "";
+}
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+.sticky {
+	display: block;
+}
+.hentry {
+	margin: 0;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 0;
+}
+
+.page-header span.posted-on {
+    margin-bottom: 12px;
+    display: inline-block;
+    width: 100%;
+}
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+.page-header small {
+    font-size: 12px;
+    color: #FC5B31;
+}
+nav.navigation.pagination {
+    margin-top: 100px;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+.no-sidebar nav.navigation.pagination {
+	text-align: center;
+}
+.no-sidebar-content #inner-content-wrapper {
+    margin: 0 auto;
+}
+
+
+
+.navigation.pagination svg {
+    fill: #000;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: -1px;
+    left: -1px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.navigation.pagination .next svg {
+	left: auto;
+    right: -1px;
+	-webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.navigation.pagination a:hover svg,
+.navigation.pagination a:focus svg {
+	fill: #fff;
+}
+.navigation.posts-navigation svg, 
+.navigation.post-navigation svg {
+    width: 14px;
+    height: 14px;
+    fill: #000;
+}
+.navigation.posts-navigation .nav-previous svg.icon-up, 
+.navigation.post-navigation .nav-previous svg.icon-up {
+	margin-right: 10px;
+}
+.navigation.posts-navigation .nav-next svg.icon-up, 
+.navigation.post-navigation .nav-next svg.icon-up {
+	margin-left: 10px;
+}
+.single-wrapper .entry-title {
+    font-size: 32px;
+    font-weight: 700;
+}
+.single-wrapper .post-categories {
+    margin-bottom: 7px;
+    display: inline-block;
+    width: 100%;
+}
+.single-wrapper article p {
+    margin-top: 0;
+    margin-bottom: 28px;
+}
+.single-wrapper article blockquote p {
+    margin-bottom: 0;
+}
+.single-wrapper article img {
+    margin-bottom: 30px;
+}
+.single-wrapper article .author-image img {
+    margin-bottom: 0;
+    border-radius: 50%;
+}
+.single-wrapper article p.first-letter:first-letter {
+    display: inline-block;
+    float: left;
+    font-size: 90px;
+    line-height: 0.6;
+    margin: 16px 16px 0 0;
+}
+.posted-on a,
+#secondary .posted-on a {
+    text-decoration: none;
+    color: #666;
+}
+.posted-on a:hover,
+.posted-on a:focus,
+#secondary .posted-on a:hover,
+#secondary .posted-on a:focus {
+	color: #FC5B31;
+}
+.single-wrapper span.posted-on svg,
+.single-wrapper span.cat-links svg {
+    fill: #FC5B31;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    position: relative;
+    top: -3px;
+}
+.single-wrapper span.cat-links svg {
+	top: -2px;
+}
+.single-wrapper span.posted-on a:hover svg,
+.single-wrapper span.posted-on a:focus svg,
+.single-wrapper span.cat-links:hover svg {
+    fill: #000;
+}
+/*.single-wrapper .entry-meta > span:not(:last-child):after {
+	content: "";
+	padding: 0 5px;
+}*/
+.tags-title {
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+}
+.tags-links {
+    display: inline-block;
+}
+.tags-links a {
+    color: #865FC1;
+    background-color: #E7DFF4;
+    display: inline-block;
+    padding: 13px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-right: 7px;
+    margin-bottom: 10px;
+}
+.tags-links a:nth-child(1n) {
+	color: #865FC1;
+    background-color: #E7DFF4;
+}
+.tags-links a:nth-child(1n):hover,
+.tags-links a:nth-child(1n):focus {
+	color: #E7DFF4;
+    background-color: #865FC1;
+}
+.tags-links a:nth-child(2n) {
+	color: #EB4986;
+    background-color: #FBDBE8;
+}
+.tags-links a:nth-child(2n):hover,
+.tags-links a:nth-child(2n):focus {
+	color: #FBDBE8;
+    background-color: #EB4986;
+}
+.tags-links a:nth-child(3n) {
+	color: #FF9933;
+    background-color: #FEE7D7;
+}
+.tags-links a:nth-child(3n):hover,
+.tags-links a:nth-child(3n):focus {
+	color: #FEE7D7;
+    background-color: #FF9933;
+}
+.single-wrapper span.tags-links a {
+    display: inline-block;
+    padding: 2px 10px;
+    margin-right: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    color: #72757a;
+    font-weight: 400;
+}
+.single-wrapper span.tags-links a:hover,
+.single-wrapper span.tags-links a:focus {
+	color: #FC5B31;
+	border-color: #FC5B31;
+}
+.single-wrapper .entry-meta {
+    margin-bottom: 25px;
+}
+.single-wrapper .entry-meta .date {
+    font-size: 49px;
+    color: #000;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.single-wrapper .entry-meta .month {
+    font-size: 14px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    padding-left: 5px;
+    margin-bottom: 28px;
+    font-weight: bold;
+}
+.single-post .site-main .comment-navigation, 
+.single-post .site-main .posts-navigation, 
+.single-post .site-main .post-navigation {
+	margin-bottom: 0;
+}
+.post-navigation .previous-article span span,
+.posts-navigation .previous-article span span,
+.post-navigation .next-article span span,
+.posts-navigation .next-article span span {
+    display: block;
+}
+.post-navigation span.previous-article b,
+.post-navigations span.previous-article b,
+.post-navigation span.next-article b,
+.post-navigations span.next-article b {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+.post-navigation span.previous-article,
+.post-navigations span.previous-article {
+    display: table;
+}
+.no-sidebar .single-wrapper .featured-image {
+	text-align: center;
+}
+span.next-article {
+    padding-right: 65px;
+    display: inline-block;
+}
+#author-section {
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 35px 0;
+    margin-bottom: 35px;
+}
+.author-image {
+    float: left;
+    margin-right: 30px;
+}
+.author-content {
+    display: table;
+}
+.author-name {
+    font-size: 18px;
+    margin-top: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.author-name:after {
+    content: "";
+    background-color: #FC5B31;
+    width: 29px;
+    height: 3px;
+    display: block;
+    margin-top: 30px;
+}
+.author-name span {
+    color: #5e5e5e;
+    padding-left: 5px;
+    font-weight: 400;
+}
+.author-content .social-icons li a {
+	background-color: #171717;
+}
+.author-content .social-icons li a svg {
+	fill: #fff;
+}
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+#reply-title,
+.comments-title {
+    font-size: 32px;
+    margin: 0;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+ul.post-categories li:after {
+    content: ",";
+}
+ul.post-categories li:last-child:after {
+    display: none;
+}
+ol.comment-list {
+    padding: 0;
+    margin: 0 0 15px;
+    list-style: none;
+}
+#comments ol {
+    list-style: none;
+    margin-left: 0;
+    padding: 0;
+}
+#comments ol.comment-list {
+	padding-top: 35px;
+	position: relative;
+    overflow: hidden;
+}
+#comments ol.children .reply {
+    padding-left: 12px;
+}
+.says {
+    display: none;
+}
+.comment-meta img {
+    width: 65px;
+    height: 65px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 35px;
+    margin-top: -20px;
+}
+#comments time:before {
+    display: none;
+}
+.comment-body {
+    position: relative;
+}
+.reply {
+    padding-bottom: 25px;
+    text-align: right;
+    padding-right: 10px;
+}
+#comments article {
+    margin-bottom: 30px;
+    clear: both;
+}
+#comments ol.comment-list > li:last-child article:last-child,
+#comments ol.comment-list > li:last-child {
+	border-bottom: none;
+}
+#comments ol.comment-list > li {
+    padding-top: 18px;
+}
+#comments ol.comment-list > li:first-child {
+    padding-top: 0;
+}
+#comments ol.comment-list > li article:last-child .reply {
+	border-bottom: none;
+    padding-bottom: 0;
+}
+.reply a {
+    padding: 10px 25px;
+    display: inline-block;
+    text-align: center;
+    background-color: #FC5B31;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.reply a:hover,
+.reply a:focus {
+    background-color: #000;
+	color: #fff;
+}
+.comment-meta .url,
+.comment-meta .fn {
+    color: #000;
+    display: inline-block;
+    text-decoration: none;
+}
+.comment-metadata {
+    float: right;
+    padding-right: 35px;
+    position: relative;
+    z-index: 1;
+}
+.comment-metadata a {
+    text-decoration: none;
+    color: #000;
+}
+.comment-metadata a:hover,
+.comment-metadata a:focus,
+.comment-meta .url:hover,
+.comment-meta .url:focus {
+	color: #FC5B31;
+}
+.comment-content {
+    margin-bottom: 13px;
+    padding: 57px 25px 7px;
+    margin-top: -50px;
+    background-color: #fff;
+    margin-left: 120px;
+    position: relative;
+    right: 10px;
+    clear: both;
+}
+.comment-content:before {
+    content: "";
+    border: 9px solid transparent;
+    border-right-color: #fff;
+    position: absolute;
+    left: -18px;
+    top: 30px;
+}
+.comment-content p {
+    margin-bottom: 1em;
+}
+.comment-meta {
+    margin-bottom: -100px;
+    display: inline-block;
+    width: 100%;
+}
+.comment-meta .fn {
+    padding-left: 35px;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+}
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation, /* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Layouts and titles
+--------------------------------------------------------------*/
+section {
+	position: relative;
+}
+.relative {
+	display: block;
+	position: relative;
+}
+.relative:before,
+.relative:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.entry-content {
+	margin-top: 0;
+}
+.wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.page-section {
+    padding: 40px 0;
+}
+.section-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px;
+}
+.section-subtitle {
+    color: #fc5b31;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    margin: 0;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    word-wrap: break-word;
+    position: relative;
+    line-height: 60px;
+}
+.section-title a {
+	text-decoration: none;
+    color: #000;
+}
+.section-title a:hover,
+.section-title a:focus {
+	color: #FC5B31;
+}
+ul li a {
+    text-decoration: none;
+}
+.entry-title {
+    font-size: 24px;
+    margin: 0 0 15px;
+    font-weight: 700;
+}
+.entry-title a {
+	color: #000;
+    text-decoration: none;
+}
+.entry-title a:hover,
+.entry-title a:focus {
+	color: #FC5B31;
+}
+.overlay {
+    background-color: #0000007a;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.align-left {
+    text-align: left;
+}
+.align-center {
+    text-align: center;
+}
+.align-right {
+    text-align: right;
+}
+.read-more {
+    position: relative;
+    text-decoration: none;
+}
+.btn {
+    padding: 12px 40px;
+    min-width: 140px;
+    width: unset;
+    position: relative;
+    text-align: center;
+    background-color: #FC5B31;
+    border: 1px solid #FC5B31;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    font-family: 'Andada Pro', serif;
+    text-transform: uppercase;
+    letter-spacing: 2.1px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.btn:hover,
+.btn:focus {
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
+}
+.same-background {
+    padding-top: 0;
+}
+.col-1 article, 
+.col-2 article, 
+.col-3 article, 
+.col-4 article,
+.col-5 article,
+.col-6 article {
+	margin-bottom: 30px;
+	width: 100%;
+}
+.col-1 article:last-child, 
+.col-2 article:last-child, 
+.col-3 article:last-child, 
+.col-4 article:last-child,
+.col-5 article:last-child,
+.col-6 article:last-child {
+	margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+    margin: -5px;
+    clear: both;
+    display: table;
+    width: 100%;
+}
+
+.gallery-item {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+    float: left;
+    padding: 5px;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
+/*--------------------------------------------------------------
+## Social Icons
+--------------------------------------------------------------*/
+.social-icons li {
+    display: inline-block;
+    height: auto;
+    text-align: center;
+    position: relative;
+    list-style: none;
+}
+.social-icons,
+.social-icons ul {
+    margin: 0;
+    padding: 0;
+}
+.social-icons li a {
+    background-color: rgb(0 0 0 / 10%);
+    width: 40px;
+    height: 40px;
+    line-height: 37px;
+    display: block;
+    border-radius: 40px;
+    border-bottom: none;
+}
+.social-icons li:not(:last-child) {
+    margin-right: 5px
+}
+.social-icons li a:hover svg,
+.social-icons li a:focus svg {
+	fill: #fff;
+}
+.social-icons li a:hover svg,
+.social-icons li a:focus svg {
+	fill: #fff;
+}
+.social-icons li a svg {
+    fill: #000000;
+}
+/*--------------------------------------------------------------
+## Social Icons Hover Color
+--------------------------------------------------------------*/
+.social-icons li a[href*="facebook.com"]:hover,
+.social-icons li a[href*="fb.com"]:hover,
+.social-icons li a[href*="facebook.com"]:focus,
+.social-icons li a[href*="fb.com"]:focus,
+.tp-social.social-icon li a[href*="fb.com"],
+.tp-social.social-icon li a[href*="facebook.com"] {
+ 	background-color: #3c5798 !important;
+}
+.social-icons li a[href*="twitter.com"]:hover,
+.social-icons li a[href*="twitter.com"]:focus,
+.tp-social.social-icon li a[href*="twitter.com"] {
+ 	background-color: #1ea0f1 !important;
+}
+.social-icons li a[href*="linkedin.com"]:hover,
+.social-icons li a[href*="linkedin.com"]:focus,
+.tp-social.social-icon li a[href*="linkedin.com"] {
+ 	background-color: #0077B5 !important;
+}
+.social-icons li a[href*="plus.google.com"]:hover,
+.social-icons li a[href*="plus.google.com"]:focus,
+.tp-social.social-icon li a[href*="plus.google.com"] {
+ 	background-color: #ec7161 !important;
+}
+.social-icons li a[href*="slack.com"]:hover,
+.social-icons li a[href*="slack.com"]:focus,
+.tp-social.social-icon li a[href*="slack.com"] {
+	background-color: #E60264;
+}
+.social-icons li a[href*="youtube.com"]:hover,
+.social-icons li a[href*="youtube.com"]:focus,
+.tp-social.social-icon li a[href*="youtube.com"] {
+ 	background-color: #cc181e !important;
+}
+
+.social-icons li a[href*="dribbble.com"]:hover,
+.social-icons li a[href*="dribbble.com"]:focus,
+.tp-social.social-icon li a[href*="dribbble.com"] {
+ 	background-color: #f4a09c !important;
+}
+
+.social-icons li a[href*="pinterest.com"]:hover,
+.social-icons li a[href*="pinterest.com"]:focus,
+.tp-social.social-icon li a[href*="pinterest.com"] {
+ 	background-color: #bd081b !important;
+}
+
+.social-icons li a[href*="bitbucket.org"]:hover,
+.social-icons li a[href*="bitbucket.org"]:focus,
+.tp-social.social-icon li a[href*="bitbucket.com"] {
+ 	background-color: #205081 !important;
+}
+
+.social-icons li a[href*="github.com"]:hover,
+.social-icons li a[href*="github.com"]:focus,
+.tp-social.social-icon li a[href*="github.com"] {
+ 	background-color: #323131 !important;
+}
+
+.social-icons li a[href*="codepen.io"]:hover,
+.social-icons li a[href*="codepen.io"]:focus,
+.tp-social.social-icon li a[href*="codepen.com"] {
+ 	background-color: #000 !important;
+}
+
+.social-icons li a[href*="flickr.com"]:hover,
+.social-icons li a[href*="flickr.com"]:focus,
+.tp-social.social-icon li a[href*="flickr.com"] {
+ 	background-color: #025FDF !important;
+}
+
+.social-icons li a[href$="/feed/"]:hover,
+.social-icons li a[href$="/feed/"]:focus,
+.tp-social.social-icon li a[href*="feed.com"] {
+ 	background-color: #089DE3 !important;
+}
+
+.social-icons li a[href*="foursquare.com"]:hover,
+.social-icons li a[href*="foursquare.com"]:focus,
+.tp-social.social-icon li a[href*="foursquare.com"] {
+ 	background-color: #F94877 !important;
+}
+
+.social-icons li a[href*="instagram.com"]:hover,
+.social-icons li a[href*="instagram.com"]:focus,
+.tp-social.social-icon li a[href*="instagram.com"] {
+ 	background-color: #cd42e7 !important;
+}
+
+.social-icons li a[href*="tumblr.com"]:hover,
+.social-icons li a[href*="tumblr.com"]:focus,
+.tp-social.social-icon li a[href*="tumblr.com"] {
+ 	background-color: #56BC8A !important;
+}
+
+.social-icons li a[href*="reddit.com"]:hover,
+.social-icons li a[href*="reddit.com"]:focus,
+.tp-social.social-icon li a[href*="reddit.com"] {
+ 	background-color: #FF4500 !important;
+}
+
+.social-icons li a[href*="vimeo.com"]:hover,
+.social-icons li a[href*="vimeo.com"]:focus,
+.tp-social.social-icon li a[href*="vimeo.com"] {
+ 	background-color: #00ADEF !important;
+}
+
+.social-icons li a[href*="digg.com"]:hover,
+.social-icons li a[href*="digg.com"]:focus,
+.tp-social.social-icon li a[href*="digg.com"] {
+ 	background-color: #00ADEF !important;
+}
+
+.social-icons li a[href*="twitch.tv"]:hover,
+.social-icons li a[href*="twitch.tv"]:focus,
+.tp-social.social-icon li a[href*="twitch.tv"] {
+ 	background-color: #0E9DD9 !important;
+}
+
+.social-icons li a[href*="stumbleupon.com"]:hover,
+.social-icons li a[href*="stumbleupon.com"]:focus,
+.tp-social.social-icon li a[href*="stumbleupon.com"] {
+ 	background-color: #EB4924 !important;
+}
+
+.social-icons li a[href*="delicious.com"]:hover,
+.social-icons li a[href*="delicious.com"]:focus,
+.tp-social.social-icon li a[href*="delicious.com"] {
+ 	background-color: #0076E8 !important;
+}
+
+.social-icons li a[href*="mailto:"]:hover,
+.social-icons li a[href*="mailto:"]:focus,
+.tp-social.social-icon li a[href*="mailto:"] {
+ 	background-color: #4169E1 !important;
+}
+.social-icons li a[href*="soundcloud.com"]:hover,
+.social-icons li a[href*="soundcloud.com"]:focus,
+.tp-social.social-icon li a[href*="soundcloud.com"] {
+ 	background-color: #FF5500 !important;
+}
+.social-icons li a[href*="wordpress.org"]:hover,
+.social-icons li a[href*="wordpress.org"]:focus,
+.tp-social.social-icon li a[href*="wordpress.org"] {
+ 	background-color: #0073AA !important;
+}
+.social-icons li a[href*="wordpress.com"]:hover,
+.tp-social.social-icon li a[href*="wordpress.com"] {
+ 	background-color: #00AADC !important;
+}
+
+.social-icons li a[href*="jsfiddle.net"]:hover,
+.social-icons li a[href*="jsfiddle.net"]:focus,
+.tp-social.social-icon li a[href*="jsfiddle.net"] {
+ 	background-color: #396AB1 !important;
+}
+
+.social-icons li a[href*="tripadvisor.com"]:hover,
+.social-icons li a[href*="tripadvisor.com"]:focus,
+.tp-social.social-icon li a[href*="tripadvisor.com"] {
+ 	background-color: #FFE090 !important;
+}
+
+.social-icons li a[href*="angel.co"]:hover,
+.social-icons li a[href*="angel.co"]:focus,
+.tp-social.social-icon li a[href*="angel.co"] {
+ 	background-color: #000 !important;
+}
+
+#contact-section .social-icons li a,
+#secondary .widget_social_icons li a {
+ 	background-color: transparent !important;
+    margin-right: 20px;
+}
+#contact-section .social-icons li:last-child a,
+#secondary .widget_social_icons li:last-child a {
+	margin-right: 0;
+}
+#contact-section .social-icons li a svg,
+#secondary .widget_social_icons li a svg {
+ 	fill: #3c5798;
+ 	width: 22px;
+    height: 22px;
+}
+#contact-section .social-icons li a[href*="facebook.com"] svg,
+#contact-section .social-icons li a[href*="fb.com"] svg,
+#secondary .widget_social_icons li a[href*="facebook.com"] svg,
+#secondary .widget_social_icons li a[href*="fb.com"] svg {
+ 	fill: #3c5798;
+}
+#contact-section .social-icons li a[href*="twitter.com"] svg,
+#secondary .widget_social_icons li a[href*="twitter.com"] svg {
+ 	fill: #1ea0f1;
+}
+#contact-section .social-icons li a[href*="linkedin.com"] svg,
+#secondary .widget_social_icons li a[href*="linkedin.com"] svg {
+ 	fill: #0077B5;
+}
+#contact-section .social-icons li a[href*="plus.google.com"] svg,
+#secondary .widget_social_icons li a[href*="plus.google.com"] svg {
+ 	fill: #ec7161;
+}
+#contact-section .social-icons li a[href*="slack.com"] svg,
+#secondary .widget_social_icons li a[href*="slack.com"] svg {
+	background-color: #E60264;
+}
+#contact-section .social-icons li a[href*="youtube.com"] svg,
+#secondary .widget_social_icons li a[href*="youtube.com"] svg {
+ 	fill: #cc181e;
+}
+
+#contact-section .social-icons li a[href*="dribbble.com"] svg,
+#secondary .widget_social_icons li a[href*="dribbble.com"] svg {
+ 	fill: #f4a09c;
+}
+
+#contact-section .social-icons li a[href*="pinterest.com"] svg,
+#secondary .widget_social_icons li a[href*="pinterest.com"] svg {
+ 	fill: #bd081b;
+}
+
+#contact-section .social-icons li a[href*="bitbucket.org"] svg,
+#secondary .widget_social_icons li a[href*="bitbucket.org"] svg {
+ 	fill: #205081;
+}
+
+#contact-section .social-icons li a[href*="github.com"] svg,
+#secondary .widget_social_icons li a[href*="github.com"] svg {
+ 	fill: #323131;
+}
+
+#contact-section .social-icons li a[href*="codepen.io"] svg,
+#secondary .widget_social_icons li a[href*="codepen.io"] svg {
+ 	fill: #000;
+}
+
+#contact-section .social-icons li a[href*="flickr.com"] svg,
+#secondary .widget_social_icons li a[href*="flickr.com"] svg {
+ 	fill: #025FDF;
+}
+
+#contact-section .social-icons li a[href$="/feed/"] svg,
+#secondary .widget_social_icons li a[href$="/feed/"] svg {
+ 	fill: #089DE3;
+}
+
+#contact-section .social-icons li a[href*="foursquare.com"] svg,
+#secondary .widget_social_icons li a[href*="foursquare.com"] svg {
+ 	fill: #F94877;
+}
+
+#contact-section .social-icons li a[href*="instagram.com"] svg,
+#secondary .widget_social_icons li a[href*="instagram.com"] svg {
+ 	fill: #cd42e7;
+}
+
+#contact-section .social-icons li a[href*="tumblr.com"] svg,
+#secondary .widget_social_icons li a[href*="tumblr.com"] svg {
+ 	fill: #56BC8A;
+}
+
+#contact-section .social-icons li a[href*="reddit.com"] svg,
+#secondary .widget_social_icons li a[href*="reddit.com"] svg {
+ 	fill: #FF4500;
+}
+
+#contact-section .social-icons li a[href*="vimeo.com"] svg,
+#secondary .widget_social_icons li a[href*="vimeo.com"] svg {
+ 	fill: #00ADEF;
+}
+
+#contact-section .social-icons li a[href*="digg.com"] svg,
+#secondary .widget_social_icons li a[href*="digg.com"] svg {
+ 	fill: #00ADEF;
+}
+
+#contact-section .social-icons li a[href*="twitch.tv"] svg,
+#secondary .widget_social_icons li a[href*="twitch.tv"] svg {
+ 	fill: #0E9DD9;
+}
+
+#contact-section .social-icons li a[href*="stumbleupon.com"] svg,
+#secondary .widget_social_icons li a[href*="stumbleupon.com"] svg {
+ 	fill: #EB4924;
+}
+
+#contact-section .social-icons li a[href*="delicious.com"] svg,
+#secondary .widget_social_icons li a[href*="delicious.com"] svg {
+ 	fill: #0076E8;
+}
+
+#contact-section .social-icons li a[href*="mailto:"] svg,
+#secondary .widget_social_icons li a[href*="mailto:"] svg {
+ 	fill: #4169E1;
+}
+#contact-section .social-icons li a[href*="soundcloud.com"] svg,
+#secondary .widget_social_icons li a[href*="soundcloud.com"] svg {
+ 	fill: #FF5500;
+}
+#contact-section .social-icons li a[href*="wordpress.org"] svg,
+#secondary .widget_social_icons li a[href*="wordpress.org"] svg {
+ 	fill: #0073AA;
+}
+#contact-section .social-icons li a[href*="wordpress.com"] svg,
+#secondary .widget_social_icons li a[href*="wordpress.com"] svg {
+}
+
+#contact-section .social-icons li a[href*="jsfiddle.net"] svg,
+#secondary .widget_social_icons li a[href*="jsfiddle.net"] svg {
+ 	fill: #396AB1;
+}
+
+#contact-section .social-icons li a[href*="tripadvisor.com"] svg,
+#secondary .widget_social_icons li a[href*="tripadvisor.com"] svg {
+ 	fill: #FFE090;
+}
+
+#contact-section .social-icons li a[href*="angel.co"] svg,
+#secondary .widget_social_icons li a[href*="angel.co"] svg {
+ 	fill: #000;
+}
+/*--------------------------------------------------------------
+#  Page Site Header
+--------------------------------------------------------------*/
+#page-site-header {
+    padding: 200px 0;
+    text-align: center;
+    position: relative;
+    background-color: #333;
+    background-size: cover;
+    background-position: 50%;
+}
+#page-site-header .wrapper {
+    position: relative;
+}
+#page-site-header .page-title {
+	font-size: 52px;
+	color: #fff;
+    margin: 0;
+}
+.post-thumbnail-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.error-404.not-found {
+    position: relative;
+}
+.error-404.not-found .page-content {
+    text-align: center;
+    max-width: 550px;
+    margin: 50px auto 0;
+}
+.error-404.not-found .page-content .read-more {
+	margin-top: 25px;
+}
+
+.error-404 .page-header{
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+#  Breadcrumb List
+--------------------------------------------------------------*/
+#breadcrumb-list {
+    margin-top: 5px;
+}
+.trail-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.trail-items li {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 400;
+    color: #fff;
+}
+.trail-items li:not(:last-child):after {
+	content: "/";
+	padding-left: 4px;
+	padding-right: 1px;
+}
+.trail-items li a {
+    color: #fff;
+    text-decoration: none;
+}
+.trail-items li a:hover,
+.trail-items li a:focus {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/*--------------------------------------------------------------
+#  Slick Pagination
+--------------------------------------------------------------*/
+.slick-dotted.slick-slider {
+	margin-bottom: 0;
+}
+.slick-slide {
+    outline: none;
+}
+.slick-prev:before, 
+.slick-next:before {
+    content: "";
+	background-image: url('assets/images/right-arrow-angle.png');
+    width: 20px;
+    height: 20px;
+    color: transparent !important;
+    display: inline-block;
+    opacity: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.single-itineraries .slick-prev:before, .single-itineraries .slick-next:before{
+	color: #000 !important;
+}
+
+.single-itineraries.dark-version .slick-prev:before, .single-itineraries.dark-version .slick-next:before {
+    color: #fff !important;
+}
+
+.single-itineraries .slick-prev:hover, .single-itineraries .slick-prev:focus, .single-itineraries .slick-next:hover, .single-itineraries .slick-next:focus{
+	background: darkgrey !important;
+}
+
+
+
+.slick-prev:before {
+	-webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+.slick-prev,
+.slick-next {
+	background-color: #DAE0E7;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50px;
+    opacity: 1;
+    z-index: 1;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.slick-prev:hover,
+.slick-next:hover,
+.slick-prev:focus,
+.slick-next:focus {
+	opacity: 1;
+	background-color: #FC5B31;
+}
+.slick-prev:hover:before,
+.slick-next:hover:before,
+.slick-prev:focus:before,
+.slick-next:focus:before {
+	-webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    -ms-filter: brightness(0) invert(1);
+    -o-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+.slick-prev {
+	left: 50px;
+}
+.slick-next {
+	right: 50px;
+}
+.slick-dots {
+	bottom: 25px;
+}
+.slick-dots li {
+    margin: 0 2px;
+}
+.slick-dots li button {
+	width: 12px;
+	height: 12px;
+	border-radius: 12px;
+	border: 1px solid #FC5B31;
+}
+.slick-dots li.slick-active button {
+	background-color: #FC5B31;
+}
+.slick-dots li button:focus {
+	outline: thin dotted #000;
+}
+.slick-dots li button:before {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+#  Featured Slider Section
+--------------------------------------------------------------*/
+#featured-slider-section {
+    position: relative;
+}
+#featured-slider-section .wrapper {
+	position: relative;
+}
+.featured-slider article {
+    background-size: cover;
+    background-position: 50%;
+    padding: 200px 0;
+    position: relative;
+}
+.featured-content-wrapper {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.featured-content-wrapper .entry-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.featured-content-wrapper .section-subtitle {
+    color: #fff;
+    font-size: 18px;
+}
+.featured-content-wrapper .entry-title {
+    font-size: 32px;
+    margin: 0 0 20px;
+    line-height: 1.25;
+    font-weight: 600;
+}
+.featured-content-wrapper .entry-title a,
+.featured-content-wrapper .entry-content {
+	color: #fff;
+}
+.featured-content-wrapper .entry-title a:hover,
+.featured-content-wrapper .entry-title a:focus {
+	color: #fc5b31;
+}
+.featured-content-wrapper .entry-content {
+	margin-bottom: 33px;
+    font-size: 22px;
+    line-height: 35px;
+}
+.featured-slider .read-more a {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background-image: none;
+    background-color: #fff;
+    color: #000;
+}
+.featured-slider .read-more a:hover,
+.featured-slider .read-more a:focus {
+	background-color: #FC5B31;
+	color: #fff;
+}
+.featured-slider .slick-dots li button {
+	border-color: #fff;
+}
+.featured-slider .slick-dots li.slick-active button {
+	background-color: #fff;
+}
+
+/*--------------------------------------------------------------
+#  Hero Banner Section
+--------------------------------------------------------------*/
+#hodophile_hero_banner {
+    position: relative;
+    background-color: #141416;
+    padding-bottom: 0;
+}
+#hodophile_hero_banner .entry-container {
+	text-align: center;
+	max-width: 890px;
+	margin: 0 auto;
+}
+#hodophile_hero_banner p.title,
+#hodophile_hero_banner .entry-title,
+#hodophile_hero_banner .entry-content p {
+	color: #fff;
+}
+#hodophile_hero_banner p.title {
+	padding: 7px 21px;
+	background-color: #2C2C2E;
+	border-radius: 50px;
+	min-width: 140px;
+    max-width: 215px;
+    text-align: left;
+    padding-right: 35px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    position: relative;
+}
+#hodophile_hero_banner .entry-title {
+	font-size: 38px;
+}
+#hodophile_hero_banner .entry-content {
+	padding: 0 50px;
+}
+#hodophile_hero_banner .content {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    position: relative;
+}
+#hodophile_hero_banner p.title:after,
+#hodophile_get_started .section-title:after {
+    content: "";
+    background-image: url(assets/images/planet-earth.png);
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    opacity: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 13px;
+    right: 17px;
+}
+#hodophile_hero_banner .image {
+    position: relative;
+}
+#hodophile_hero_banner article {
+	padding: 120px 0;
+	background-position: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+}
+#hodophile_hero_banner .image .entry-title {
+	text-align: center;
+	visibility: hidden;
+	position: relative;
+}
+#hodophile_hero_banner .image article .overlay {
+	visibility: hidden;
+}
+#hodophile_hero_banner .image article:hover .entry-title,
+#hodophile_hero_banner .image article:focus .entry-title,
+#hodophile_hero_banner .image article:hover .overlay,
+#hodophile_hero_banner .image article:focus .overlay {
+	visibility: visible;
+}
+#hodophile_hero_banner .image .entry-title a {
+	color: #fff;
+	text-transform: uppercase;
+}
+#hodophile_hero_banner .image .entry-title a:hover,
+#hodophile_hero_banner .image .entry-title a:focus {
+	color: #fc5b31;
+}
+
+
+.discover-now {
+    margin-top: 40px;
+}
+
+
+/*--------------------------------------------------------------
+#  Search Section
+--------------------------------------------------------------*/
+#hodophile_trip_search_section .section-subtitle {
+	color: #888889;
+	text-transform: uppercase;
+}
+#hodophile_trip_search_section .section-title {
+	margin-bottom: 5px;
+}
+.wp-travel-search form {
+    clear: both;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.wp-travel-search p {
+    width: 100%;
+    margin-bottom: 0;
+}
+.wp-travel-search p:not(:last-child) {
+	margin-right: 20px;
+	border: 1px solid #D0D0D0;
+	padding: 20px;
+	border-radius: 12px;
+}
+.wp-travel-search p label {
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    color: #141416;
+    width: 100%;
+}
+.wp-travel-search p input[type=text],
+.wp-travel-search p span.title,
+.wp-travel-search p select {
+    color: #141416;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: transparent;
+}
+.wp-travel-search p span.title {
+	text-transform: uppercase;
+}
+.wp-travel-search input[type="text"],
+.wp-travel-search select {
+    border: none;
+    background-color: transparent;
+}
+.wp-travel-search input[type="submit"] {
+    padding: 10px 40px;
+    min-width: 140px;
+    width: unset;
+    position: relative;
+    text-align: center;
+    background-color: #FC5B31;
+    border: 1px solid #FC5B31;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2.1px;
+    font-family: 'Andada Pro', serif;
+    text-transform: uppercase;
+}
+.wp-travel-search input[type="submit"]:hover,
+.wp-travel-search input[type="submit"]:focus {
+    background-color: #000;
+    border-color: #000;
+}
+.wp-travel-search p.wp-travel-button {
+    width: 20%;
+    margin-bottom: 0;
+}
+.wp-travel-search .wp-travel-button button[type="submit"] {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    background-color: #ea4c89;
+    float: right;
+    margin: auto;
+    text-align: center;
+    padding: 0;
+}
+.wp-travel-search p button[type="submit"] svg {
+    fill: #fff;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    float: none;
+}
+.wp-travel-search p button[type="submit"]:hover,
+.wp-travel-search p button[type="submit"]:focus {
+    background-color: #23262f;
+}
+p.wp-travel-search {
+	position: absolute;
+	bottom: -25px;
+    right: 0;
+    width: unset;
+    text-align: center;
+}
+
+
+/*--------------------------------------------------------------
+#  Destinations Section
+--------------------------------------------------------------*/
+#hodophile_popular_destination_section .featured-image {
+	position: relative;
+	padding: 150px 0;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	border-radius: 12px;
+}
+#hodophile_popular_destination_section .wp-travel-locations a{
+	text-decoration: none;
+	color: #ABABAB;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+}
+#hodophile_popular_destination_section .wp-travel-locations a:focus,
+#hodophile_popular_destination_section .wp-travel-locations a:hover{
+	color: #FC5B31;
+}
+#hodophile_popular_destination_section .overlay {
+	border-radius: 12px;
+	visibility: hidden;
+}
+#hodophile_popular_destination_section article .btn {
+	background-color: #fff;
+	border-color: #fff;
+	color: #141416;
+	visibility: hidden;
+}
+#hodophile_popular_destination_section article .book-now {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-align: center;
+}
+#hodophile_popular_destination_section article:hover .overlay,
+#hodophile_popular_destination_section article:focus .overlay,
+#hodophile_popular_destination_section article:hover .btn,
+#hodophile_popular_destination_section article:focus .btn {
+	visibility: visible;
+}
+#hodophile_popular_destination_section article .btn:hover,
+#hodophile_popular_destination_section article .btn:focus {
+	background-color: #fc5b31;
+	border-color: #fc5b31;
+	color: #fff;
+}
+#hodophile_popular_destination_section .destination-wrapper {
+	border-radius: 12px;
+	background-color: #fff;
+	position: relative;
+}
+#hodophile_popular_destination_section .entry-container {
+	padding: 30px 30px 15px 30px;
+}
+#hodophile_popular_destination_section .entry-header span {
+	color: #ABABAB;
+}
+#hodophile_popular_destination_section .trip-price ins {
+	font-size: 14px;
+	font-weight: 700;
+	color: #ABABAB;
+}
+#hodophile_popular_destination_section .trip-price ins > span {
+	font-size: 24px;
+	color: #FC5B31;
+	font-family: 'Andada Pro', serif;
+	padding-right: 3px;
+}
+
+#hodophile_popular_destination_section .meta-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    border-top: 1px solid #E7E7E7;
+    padding: 15px 0 0 0;
+}
+#hodophile_popular_destination_section .view-more,
+#hodophile_blog_section .view-more {
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 60px;
+}
+#hodophile_popular_destination_section .view-more .btn,
+#hodophile_latest_post .view-more .btn,
+#hodophile_gallery_section .view-more .btn,
+#hodophile_upcoming_event .view-more .btn,
+#hodophile_medical_product .view-more .btn,
+#hodophile_blog_section .view-more .btn {
+	background-color: transparent;
+	color: #141416;
+}
+
+#hodophile_medical_product .trip-price{
+	color: #FC5B31;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3{
+	padding: 0px;
+}
+
+
+.wp-travel-average-review {
+    width: 5.7em;
+}
+
+#wp-travel-tab-content-bookings .my-order a{
+	text-decoration: none;
+}
+
+.wp-travel-default-article {
+    border: 1px solid #d9d9d9 !important;
+    border-radius: 12px;
+}
+
+.wp-travel-default-article .wp-travel-entry-content-wrapper .description-right {
+    border-left: 1px solid #d9d9d9 !important;
+}
+
+.dashboard-tab ul.resp-tabs-list li{
+	    color: #000000 !important;
+}
+
+.wp-travel-itinerary-items .wp-travel-post-item-wrapper .wp-travel-post-thumbnail img{
+	    object-fit: fill !important;
+}
+
+.wp-travel-trips-has-sidebar+.wp-travel-widget-area{
+	padding: 0 0 !important; 
+}
+
+.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-image img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.wptravel-layout-v2 .wptravel-archive-wrapper .view-box{
+	border-radius: 12px !important;
+}
+
+.wp-travel-toolbar {
+    border-radius: 12px !important;
+}
+.dark-version #secondary section,
+.dark-version .wp-travel-trips-has-sidebar+.wp-travel-widget-area section {
+    background-color: #111 !important;
+}
+
+#secondary section,
+.wp-travel-trips-has-sidebar+.wp-travel-widget-area section{
+	background-color: #ddd !important;
+	padding: 15px !important;
+	border-radius: 12px !important;
+}
+
+.woocommerce input.button:hover{
+	border-color: #FC5B31;
+}
+
+#reviews{
+	padding: 30px;
+}
+/*--------------------------------------------------------------
+#  Experience & Download App Section
+--------------------------------------------------------------*/
+#hodophile_about_section,
+#hodophile_featured_section {
+	background-color: #141416;
+}
+#hodophile_about_section p.subtitle,
+#hodophile_featured_section p.subtitle,
+#hodophile_about_section .counter-value {
+	color: #FC5B31;
+	font-weight: 700;
+	margin: 0;
+}
+#hodophile_about_section .entry-title,
+#hodophile_featured_section .entry-title,
+#hodophile_about_section .counter-title {
+	color: #fff;
+}
+#hodophile_about_section .counter-title {
+	font-size: 18.06px;
+	margin: 0;
+}
+#hodophile_about_section .entry-title,
+#hodophile_featured_section .entry-title,
+#hodophile_about_section .counter-value {
+	font-size: 28px;
+	margin: 0;
+}
+#hodophile_about_section .entry-title,
+#hodophile_featured_section .entry-title {
+	margin-bottom: 10px;
+}
+#hodophile_about_section .entry-content p,
+#hodophile_featured_section .entry-content p {
+	color: #A2A2A2;
+}
+#hodophile_about_section .btn {
+	background-color: #2C2C2E;
+	border-color: #2C2C2E;
+}
+#hodophile_about_section .btn:hover,
+#hodophile_about_section .btn:focus {
+	background-color: #FC5B31;
+	border-color: #FC5B31;
+}
+#hodophile_about_section .counter {
+	margin-top: 60px;
+}
+#hodophile_about_section .featured-image,
+#hodophile_featured_section .featured-image {
+	padding: 200px 0;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	margin-top: 40px;
+	border-radius: 12px;
+}
+#hodophile_featured_section .featured-image {
+	margin: 0 0 40px 0;
+}
+#hodophile_featured_section .discover-now a:not(:last-child) {
+	margin-right: 15px;
+}
+
+/*--------------------------------------------------------------
+#  Blog Section
+--------------------------------------------------------------*/
+#hodophile_testimonial_section .slick-slide{
+	width: 400px !important;
+}
+#hodophile_blog_section .featured-image,
+#hodophile_testimonial_section .featured-image {
+    position: relative;
+    padding: 150px 0;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+}
+#hodophile_blog_section .blog-wrapper,
+#hodophile_testimonial_section .testimonial-wrapper {
+	background-color: #fff;
+	border-radius: 12px;
+}
+#hodophile_blog_section .entry-container {
+	padding: 30px 25px;
+}
+#hodophile_blog_section .read-more {
+	text-decoration: none;
+	color: #fc5b31;
+}
+#hodophile_blog_section .read-more:hover,
+#hodophile_blog_section .read-more:focus {
+	color: #000;
+}
+#hodophile_blog_section .entry-content p {
+	color: #AAAAAB;
+}
+#hodophile_blog_section .entry-title {
+	margin-bottom: 10px;
+}
+
+
+/*--------------------------------------------------------------
+#  Testimonials Section
+--------------------------------------------------------------*/
+#hodophile_testimonial_section {
+	position: relative;
+}
+#hodophile_testimonial_section:before {
+	content: "";
+	background-color: #141416;
+	width: 100%;
+	height: 73%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: -1;
+}
+#hodophile_testimonial_section .section-header,
+#hodophile_gallery_section .section-header {
+	text-align: left; 
+	max-width: 720px;
+	margin: 0 0 40px 0; 
+}
+#hodophile_testimonial_section .section-title {
+	color: #fff;
+}
+#hodophile_testimonial_section article {
+	padding: 0 15px;
+}
+#hodophile_testimonial_section .testimonial-slider {
+	margin: 0 -15px;
+}
+#hodophile_testimonial_section .slick-list {
+	overflow: visible;
+}
+#hodophile_testimonial_section .slick-arrow {
+	top: -75px;
+	background-color: transparent;
+	border: 1px solid #FC5B31;
+}
+#hodophile_testimonial_section .slick-arrow:hover,
+#hodophile_testimonial_section .slick-arrow:focus {
+	background-color: #FC5B31;
+}
+#hodophile_testimonial_section .slick-next {
+	right: 0;
+}
+#hodophile_testimonial_section .slick-prev {
+	left: auto;
+	right: 60px;
+}
+#hodophile_testimonial_section .slick-next:before,
+#hodophile_testimonial_section .slick-prev:before {
+	-webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    -ms-filter: brightness(0) invert(1);
+    -o-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+#hodophile_testimonial_section .entry-container {
+	padding: 60px 25px 30px 25px;
+	position: relative;
+}
+#hodophile_testimonial_section .testimonial-image {
+	position: absolute;
+	top: -35px;
+}
+#hodophile_testimonial_section .testimonial-image img {
+	width: 70px;
+	height: 70px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+#hodophile_testimonial_section .entry-title {
+	margin-bottom: 0;
+}
+#hodophile_testimonial_section .testimonial-position {
+	color: #ABABAB;
+}
+#hodophile_testimonial_section .entry-content {
+    margin-top: 15px;
+}
+
+
+/*--------------------------------------------------------------
+#  Gallery Section
+--------------------------------------------------------------*/
+#hodophile_gallery_section .section-header {
+	max-width: 850px;
+}
+#hodophile_gallery_section .section-title {
+	margin-bottom: 6px;
+}
+#hodophile_gallery_section .section-subtitle {
+	color: #888889;
+}
+#hodophile_gallery_section ul li {
+	padding: 0 10px;
+	list-style: none;
+	width: 100%;
+}
+#hodophile_gallery_section ul li:not(:last-child) {
+	margin-bottom: 15px;
+}
+#hodophile_gallery_section ul {
+	margin: 0 -10px;
+	padding: 0;
+}
+#hodophile_gallery_section ul li img {
+	height: 300px;
+	width: 100%;
+	border-radius: 12px;
+	object-fit: cover;
+}
+#hodophile_gallery_section ul.first-gallery {
+	margin-bottom: 20px;
+}
+#hodophile_gallery_section ul.first-gallery li a:hover img,
+#hodophile_gallery_section ul.first-gallery li a:focus img,
+#hodophile_gallery_section ul.second-gallery li a:hover img,
+#hodophile_gallery_section ul.second-gallery li a:focus img
+/*#hodophile_gallery_section ul.first-gallery li:nth-child(2) img,
+#hodophile_gallery_section ul.second-gallery li:nth-child(3) img */{
+	box-shadow: 0px 20px 40px -15px rgb(0 0 0 / 70%);
+}
+#hodophile_gallery_section .gallery-wrapper {
+	position: relative;
+}
+#hodophile_gallery_section .view-more {
+	margin: 0 auto;
+	margin-top: 50px;
+	text-align: center;
+}
+
+
+/*--------------------------------------------------------------
+#  Get Started Section
+--------------------------------------------------------------*/
+#hodophile_get_started {
+	background-color: #FC5B31;
+}
+#hodophile_get_started .section-header {
+	max-width: 850px;
+}
+#hodophile_get_started .section-title,
+#hodophile_get_started .section-subtitle {
+	margin-bottom: 10px;
+	color: #fff;
+	position: relative;
+}
+#hodophile_get_started .section-title:after {
+	top: unset;
+	width: 35px;
+	height: 35px;
+	bottom: 10px;
+    right: 65px;
+}
+#hodophile_get_started .discover-now {
+	text-align: center;
+}
+#hodophile_get_started .btn {
+	background-color: #141416;
+	border-color: #141416;
+}
+#hodophile_get_started .btn:hover,
+#hodophile_get_started .btn:hover {
+	background-color: transparent;
+	border-color: #fff;
+	color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Second Design    Blog Slider
+--------------------------------------------------------------*/
+.second-design ul.post-categories li a, 
+.second-design .posted-on a {
+	color: #000;
+}
+.second-design .section-header {
+	margin: 0 0 40px 0;
+	text-align: unset;
+}
+.second-design .section-title {
+	font-size: 38px;
+	line-height: unset;
+}
+.byline a {
+	text-decoration: none;
+}
+#hodophile_slider_section ul.post-categories li a, 
+#hodophile_slider_section .posted-on a,
+#hodophile_slider_section .entry-meta > span {
+	color: #fff;
+}
+#hodophile_slider_section .entry-meta span:not(:last-child):after {
+	background-color: #fff;
+}
+#hodophile_slider_section .blog-slider {
+	position: relative;
+}
+#hodophile_slider_section article {
+	padding: 200px 0;
+	background-position: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#hodophile_slider_section ul.post-categories li a:hover,
+#hodophile_slider_section ul.post-categories li a:focus,
+#hodophile_slider_section .posted-on a:hover,
+#hodophile_slider_section .posted-on a:focus {
+	color: #fc5b31;
+}
+
+
+/*--------------------------------------------------------------
+#  Featured Post
+--------------------------------------------------------------*/
+#hodophile_featured_post_section .featured-post-item {
+    position: relative;
+}
+#hodophile_featured_post_section .featured-image {
+    position: relative;
+    background-size: cover;
+    background-position: 50%;
+    padding: 150px 0;
+}
+#hodophile_featured_post_section .featured-image a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.2;
+}
+#hodophile_featured_post_section .featured-image a:after {
+    position: absolute;
+    content: "";
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    border: 1px solid rgba(255,255,255,.95);
+    box-shadow: 0 0 0 15px rgb(255 255 255 / 10%);
+    will-change: opacity;
+    transition: opacity .6s,transform .4s cubic-bezier(.25,.46,.45,.94);
+    pointer-events: none;
+}
+#hodophile_featured_post_section .read-more {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+/*--------------------------------------------------------------
+#  Partners Section
+--------------------------------------------------------------*/
+#hodophile_partners article {
+	text-align: -webkit-center;
+}
+#hodophile_partners .slick-track {
+	display: flex;
+	align-items: center;
+}
+
+#hodophile_partners .slick-arrow{
+   border: 1px solid #fc5b31;
+}
+
+#hodophile_partners .slick-arrow:hover,
+#hodophile_partners .slick-arrow:focus{
+   border: 1px solid #fc5b31;
+   background-color: #fc5b31;
+}
+
+/*--------------------------------------------------------------
+#  Primary Section
+--------------------------------------------------------------*/
+#hodophile_latest_post .entry-title {
+	font-size: 28px;
+	margin-bottom: 4px;
+}
+#hodophile_latest_post .entry-content p {
+	margin: 10px 0;
+}
+#hodophile_latest_post .featured-image {
+	padding: 120px 0;
+	background-position: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-bottom: 15px;
+	position: relative;
+}
+#hodophile_latest_post article:not(:last-child) {
+	margin-bottom: 35px;
+}
+#hodophile_latest_post article .read-more {
+	margin-top: 25px;
+}
+#hodophile_latest_post .post-footer-meta {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+#hodophile_latest_post .view-more {
+    margin-top: 70px;
+    text-align: center;
+    margin-left: -100px;
+}
+
+/*--------------------------------------------------------------
+#  Secondary Section
+---------------------------------------------------------------*/
+.widget_popular_post .popular-post-wrapper,
+.widget_editors_choice li:not(:first-child) .editors-choice-wrapper {
+    display: table;
+    position: relative;
+    align-items: center;
+    width: 100%;
+}
+.widget_popular_post .featured-image,
+.widget_editors_choice li:not(:first-child) .featured-image {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50%;
+    width: 25%;
+    position: absolute;
+    display: table-cell;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin-bottom: 0;
+}
+.widget_popular_post .entry-container,
+.widget_editors_choice li:not(:first-child) .entry-container {
+    text-align: unset;
+    width: 75%;
+    display: table-cell;
+    padding: 0px 0 0 15px;
+}
+
+.widget_editors_choice li:nth-child(1) .featured-image {
+	padding: 110px 0;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	margin-bottom: 10px; 
+}
+.widget_editors_choice li:nth-child(1) .entry-container {
+	position: relative;
+}
+
+.widget_ads .featured-image img {
+	width: 100%;
+}
+
+/*--------------------------------------------------------------
+#  Recent Post Section
+--------------------------------------------------------------*/
+#hodophile_recent_post .featured-image {
+	position: relative;
+	padding: 150px 0;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	margin-bottom: 15px;
+}
+#hodophile_recent_post .post-footer-meta {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+/*--------------------------------------------------------------
+#  Subscription Section
+--------------------------------------------------------------*/
+#hodophile_subscription .subscribe-wrapper {
+    padding: 25px;
+    background-color: #fff;
+    text-align: center;
+}
+#hodophile_subscription form p {
+	margin: 0;
+}
+#hodophile_subscription .subscribe-text p {
+	margin-bottom: 10px;
+}
+#hodophile_subscription .widget-title {
+	font-size: 26px;
+	margin-bottom: 15px;
+}
+#hodophile_subscription form #subscribe-submit {
+	margin-top: 10px;
+}
+
+/*--------------------------------------------------------------
+#  Featyured Product Section
+--------------------------------------------------------------*/
+
+#featured-products .featured-image {
+    background-size: cover;
+    background-position: 50%;
+    background-color: #333;
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+}
+#featured-products .entry-container {
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 15px 30px;
+}
+#featured-products .entry-title {
+    text-transform: uppercase;
+    font-size: 16px;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+@media screen and (min-width: 767px) {
+	#featured-products .featured-image {
+	    padding: 150px 0;
+	}
+}
+
+
+/*--------------------------------------------------------------
+#  Instagram Section
+--------------------------------------------------------------*/
+#hodophile_instagram .wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+#hodophile_instagram article {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+#hodophile_instagram article img {
+	width: 100%;
+	height: 270px;
+	object-fit: cover;
+}
+#hodophile_instagram i {
+    font-size: 22px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+#hodophile_instagram article:hover i, 
+#hodophile_instagram article:focus i {
+    opacity: 1;
+    visibility: visible;
+}
+#hodophile_instagram article:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+#hodophile_instagram article:hover:before, 
+#hodophile_instagram article:focus:before {
+    opacity: 0.5;
+}
+
+
+/*--------------------------------------------------------------
+#  Third Design
+--------------------------------------------------------------*/
+.third-design ul.post-categories li a {
+	color: #fc5b31;
+}
+.third-design ul.post-categories li a:hover,
+.third-design ul.post-categories li a:focus {
+	color: #000;
+}
+.third-design #hodophile_slider_section .posted-on .entry-date {
+	color: #fff;
+}
+.third-design .posted-on time:not(:last-child) {
+    margin-right: 25px;
+    position: relative;
+}
+.third-design .posted-on time:not(:last-child):after {
+    content: "-";
+    position: absolute;
+    top: -5px;
+    right: -19px;
+}
+.third-design #hodophile_recent_post .recent-post-wrapper {
+	background-color: #fff;
+}
+.third-design #hodophile_recent_post .entry-container {
+	padding: 0 20px 20px 20px;
+}
+
+/*--------------------------------------------------------------
+#  Timer Section
+--------------------------------------------------------------*/
+#hodophile_timer #timer {
+	background-color: #FC5B31;
+	padding: 40px;
+	text-align: center;
+}
+#hodophile_timer #timer div {
+	color: #fff;
+	font-size: 42px;
+	font-weight: 700;
+}
+#hodophile_timer #timer div:not(:last-child) {
+	margin-bottom: 40px;
+}
+#hodophile_timer #timer div span {
+	font-weight: 400;
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+
+/*--------------------------------------------------------------
+#  Upcoming Event Section
+--------------------------------------------------------------*/
+#hodophile_upcoming_event .featured-image {
+	padding: 120px 0;
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+}
+#hodophile_upcoming_event .entry-title {
+	margin-bottom: 0;
+}
+#hodophile_upcoming_event .entry-meta {
+	padding: 0;
+}
+#hodophile_upcoming_event .entry-content p {
+	padding: 10px 0;
+}
+#hodophile_upcoming_event .entry-container {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    margin-top: -30px;
+    border-top: 2px solid #fc5b31;
+    text-align: center;
+}
+.location a {
+	text-decoration: none;
+}
+.entry-fee{
+	margin-bottom: 10px;
+}
+.entry-fee span {
+	font-size: 16px;
+	display: inline-flex;
+	align-items: center;
+}
+.entry-fee span:not(:last-child) {
+	margin-right: 15px;
+}
+.entry-fee span svg {
+	margin-right: 5px;
+	fill: #fc5b31;
+}
+#hodophile_upcoming_event .discover-now {
+    margin: 20px 0 15px 0;
+}
+#hodophile_upcoming_event .discover-now .btn {
+	text-transform: none;
+	letter-spacing: unset;
+	font-size: 16px;
+}
+#hodophile_upcoming_event .view-more {
+	text-align: center;
+	margin-top: 40px;
+}
+
+
+/*--------------------------------------------------------------
+#  Counter Section
+--------------------------------------------------------------*/
+#hodophile_counter {
+    position: relative;
+    background-size: cover;
+    background-position: 50%;
+    background-attachment: fixed;
+    padding: 120px 0;
+}
+#hodophile_counter .overlay {
+    opacity: 0.6;
+}
+#hodophile_counter .wrapper {
+	position: relative;
+}
+#hodophile_counter .section-title,
+#hodophile_counter .section-subtitle {
+	color: #fff;
+}
+#hodophile_counter .counter-item {
+	position: relative;
+	z-index: 1;
+}
+#hodophile_counter .counter-icon {
+    font-size: 28px;
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 100%;
+    background-color: #1A1C20;
+    margin-right: 20px;
+    float: left;
+    text-align: center;
+}
+#hodophile_counter .counter-value,
+#hodophile_counter .counter-title {
+    font-size: 42px;
+    color: #fff;
+    margin: 0 0 10px;
+    font-weight: 600;
+    display: table-row;
+}
+#hodophile_counter .counter-title {
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+    font-weight: 400;
+}
+
+/*--------------------------------------------------------------
+#  Team Section
+--------------------------------------------------------------*/
+#hodophile_speaker {
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+#hodophile_speaker .wrapper {
+	position: relative;
+	z-index: 1;
+}
+#hodophile_speaker .section-title{
+	color: #fff;
+}
+#hodophile_speaker .speaker-item-wrapper {
+    position: relative;
+    text-align: center;
+    border: 15px solid #fff;
+    border-radius: 10px;
+}
+#hodophile_speaker .featured-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+#hodophile_speaker .entry-container {
+    padding: 35px 15px 40px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: visible;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#hodophile_speaker .speaker-item-wrapper:hover .entry-container {
+	opacity: 1;
+	visibility: visible;
+}
+#hodophile_speaker .entry-title {
+    margin: 0 0 20px;
+    font-weight: 600;
+}
+#hodophile_speaker .speaker-position {
+    margin: 0 0 10px;
+    display: block;
+}
+#hodophile_speaker .view-more {
+    margin-top: 70px;
+    text-align: center;
+}
+#hodophile_speaker .social-icons li {
+	display: inline-block;
+}
+
+/*--------------------------------------------------------------
+#  Event Schedule Section
+--------------------------------------------------------------*/
+#hodophile_event_schedules .section-content,
+#hodophile_event_schedules article {
+    position: relative;
+}
+#hodophile_event_schedules .section-content {
+    padding-top: 25px;
+}
+#hodophile_event_schedules .section-content:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #cad2d6;
+    left: 50%;
+}
+#hodophile_event_schedules article {
+    width: 50%;
+}
+#hodophile_event_schedules article:nth-child(even) {
+    float: right;
+}
+#hodophile_event_schedules article:nth-child(odd):before,
+#hodophile_event_schedules article:nth-child(even):before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    right: -11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #FC5B31;
+}
+#hodophile_event_schedules article:nth-child(odd):after,
+#hodophile_event_schedules article:nth-child(even):after {
+    content: "";
+    background-color: #FC5B31;
+    position: absolute;
+    top: 20px;
+    right: -25px;
+    width: 50px;
+    height: 1px;
+    z-index: -1;
+}
+#hodophile_event_schedules article:nth-child(even):before {
+    right: auto;
+    left: -9px;
+}
+#hodophile_event_schedules article:nth-child(even):after {
+    right: auto;
+    left: -25px;
+}
+#hodophile_event_schedules article:nth-child(odd) {
+    clear: both;
+}
+#hodophile_event_schedules article .event-wrapper {
+    padding: 7px 40px 40px;
+    max-width: 500px;
+}
+#hodophile_event_schedules article:nth-child(odd) .event-wrapper {
+	text-align: right;
+	margin-left: auto;
+}
+#hodophile_event_schedules article:nth-child(even) .event-wrapper {
+	text-align: left;
+	margin-right: auto;
+}
+#hodophile_event_schedules .posted-on {
+    margin-bottom: 7px;
+    display: block;
+}
+#hodophile_event_schedules .entry-title {
+    margin-bottom: 7px;
+}
+
+/*--------------------------------------------------------------
+# 	Latest Event Section
+--------------------------------------------------------------*/
+#hodophile_latest_event {
+	text-align: center;
+}
+#hodophile_latest_event .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+#hodophile_latest_event .section-subtitle {
+	margin: 0;
+	font-size: 18px;
+}
+#hodophile_latest_event article {
+	border-top: 1px solid #1a1a1a;
+	border-bottom: 1px solid #1a1a1a;
+	padding: 30px 0;
+}
+#hodophile_latest_event article:not(:last-child) {
+    border-bottom: unset;
+}
+#hodophile_latest_event article:hover {
+    background-image: linear-gradient(rgb(252 91 49 / 53%), rgb(252 91 49 / 12%));
+}
+#hodophile_latest_event .posted-on a {
+	font-size: 24px;
+    font-weight: 400;
+}
+#hodophile_latest_event .entry-header img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+#hodophile_latest_event .entry-header img, 
+#hodophile_latest_event .entry-header {
+    margin-bottom: 21px;
+}
+#hodophile_latest_event .entry-title {
+    font-size: 22px;
+    margin-bottom: 7px;
+}
+#hodophile_latest_event .event-location {
+	padding: 0;
+}
+small.tp-event-date-label, small.tp-event-start-time-label, small.tp-event-location-label {
+    display: none;
+}
+span.event-time i {
+    margin-right: 10px;
+    color: #1A1C20;
+}
+.event-time {
+    display: block;
+    margin-bottom: 21px;
+    color: #1A1C20;
+}
+#hodophile_latest_event .view-more {
+	margin-top: 70px;
+}
+
+/*--------------------------------------------------------------
+#  Fourth Design
+--------------------------------------------------------------*/
+.fourth-design #hodophile_slider_section .featured-content-wrapper {
+	text-align: left;
+}
+.fourth-design #hodophile_slider_section .featured-content-wrapper .entry-container {
+	margin: 0;
+}
+.fourth-design .featured-content-wrapper .entry-content {
+	font-size: 20px;
+}
+.fourth-design #hodophile_testimonial_section:before {
+	content: unset;
+}
+.fourth-design #hodophile_testimonial_section .section-title {
+	color: #000;
+}
+.fourth-design #hodophile_testimonial_section .slick-next:before, 
+.fourth-design #hodophile_testimonial_section .slick-prev:before {
+	filter: unset;
+}
+.fourth-design #hodophile_testimonial_section .slick-next:hover:before, 
+.fourth-design #hodophile_testimonial_section .slick-prev:hover:before,
+.fourth-design #hodophile_testimonial_section .slick-next:focus:before, 
+.fourth-design #hodophile_testimonial_section .slick-prev:focus:before {
+    -webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    -ms-filter: brightness(0) invert(1);
+    -o-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+/*--------------------------------------------------------------
+#  We Have Section
+--------------------------------------------------------------*/
+#hodophile_we_have .we-have-title {
+	color: #FC5B31;
+	margin: 0;
+}
+#hodophile_we_have .we-have-wrapper {
+	background-color: #fff;
+	padding: 20px;
+}
+#hodophile_we_have article:not(:last-child) {
+	border-right: 1px solid rgb(0 0 0 / 10%);;
+}
+#hodophile_we_have article .entry-container{
+	padding: 0 10px;
+}
+
+/*--------------------------------------------------------------
+#  Department Section
+--------------------------------------------------------------*/
+#hodophile_department .department-icon {
+	margin-bottom: 15px;
+}
+#hodophile_department .department-icon i {
+	font-size: 62px;
+	color: #FC5B31;
+}
+#hodophile_department article {
+    border: 1px solid rgb(0 0 0 / 10%);
+    margin-bottom: 0;
+}
+#hodophile_department .entry-container {
+	padding: 40px 30px;
+}
+
+/*--------------------------------------------------------------
+#  Latest Product Section
+--------------------------------------------------------------*/
+
+
+#hodophile_latest_product_section {
+    background-color: #f4f5f6;
+}
+
+.dark-version #hodophile_latest_product_section {
+    background-color: #141416;
+}
+.woocommerce #latest-products ul.products li.product, 
+.woocommerce #recent-products ul.products li.product, 
+.woocommerce-page #recent-products ul.products li.product {
+	float: none;
+	width: 100%;
+	padding: 0;
+}
+.woocommerce #recent-products ul.products li.product:last-child, 
+.woocommerce-page #recent-products ul.products li.product:last-child {
+	margin-bottom: 0;
+}
+
+.woocommerce #recent-products ul.products li.product, 
+.woocommerce-page #recent-products ul.products li.product,
+#latest-products .products {
+	text-align: center;
+}
+
+@media screen and (min-width: 567px) { 
+	.woocommerce #recent-products ul.products li.product, 
+	.woocommerce-page #recent-products ul.products li.product,
+	.woocommerce #latest-products ul.products li.product, 
+	.woocommerce-page #latest-products ul.products li.product {
+		padding: 0 15px;
+		float: left;
+		width: 50%;
+		margin-bottom: 30px;
+	}
+	.woocommerce #recent-products ul.products li.product:nth-child(2n+1), 
+	.woocommerce-page #recent-products ul.products li.product:nth-child(2n+1),
+	.woocommerce #latest-products ul.products li.product:nth-child(2n+1), 
+	.woocommerce-page #latest-products ul.products li.product:nth-child(2n+1) {
+		clear: left;
+	}
+	.woocommerce #recent-products ul.products li.product:nth-last-child(-n+2), 
+	.woocommerce-page #recent-products ul.products li.product:nth-last-child(-n+2),
+	.woocommerce #latest-products ul.products li.product:nth-last-child(-n+2), 
+	.woocommerce-page #latest-products ul.products li.product:nth-last-child(-n+2) {
+		margin-bottom: 0;
+	}
+	.woocommerce #recent-products ul.products li.product, 
+	.woocommerce-page #recent-products ul.products li.product,
+	.woocommerce #latest-products ul.products li.product, 
+	.woocommerce-page #latest-products ul.products li.product {
+		margin: 0;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.woocommerce #recent-products ul.products li.product, 
+	.woocommerce-page #recent-products ul.products li.product,
+	.woocommerce #latest-products ul.products li.product, 
+	.woocommerce-page #latest-products ul.products li.product {
+		width: 25%;
+	}
+	.woocommerce #recent-products ul.products li.product:nth-child(2n+1), 
+	.woocommerce-page #recent-products ul.products li.product:nth-child(2n+1),
+	.woocommerce #latest-products ul.products li.product:nth-child(2n+1), 
+	.woocommerce-page #latest-products ul.products li.product:nth-child(2n+1) {
+		clear: none;
+	}
+	.woocommerce #recent-products ul.products li.product:nth-child(4n+1), 
+	.woocommerce-page #recent-products ul.products li.product:nth-child(4n+1),
+	.woocommerce #latest-products ul.products li.product:nth-child(4n+1), 
+	.woocommerce-page #latest-products ul.products li.product:nth-child(4n+1) {
+		clear: left;
+	}
+	.woocommerce #recent-products ul.products li.product:nth-last-child(-n+4), 
+	.woocommerce-page #recent-products ul.products li.product:nth-last-child(-n+4),
+	.woocommerce #latest-products ul.products li.product:nth-last-child(-n+4), 
+	.woocommerce-page #latest-products ul.products li.product:nth-last-child(-n+4) {
+		margin-bottom: 0;
+	}
+}
+/*--------------------------------------------------------------
+#  Medical Product Section
+--------------------------------------------------------------*/
+
+#hodophile_medical_product {
+	text-align: center;
+}
+
+#hodophile_latest_product_section ul.products li.product,
+#hodophile_medical_product ul.products li.product{
+	margin: 0px 0px 30px 0px;
+}
+.product-nav li a {
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    color: #292929;
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+}
+.product-nav li {
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+}
+ul.product-nav li.active a,
+ul.product-nav li a.active,
+ul.product-nav li a:hover,
+ul.product-nav li a:focus{
+    background-color: #FC5B31;
+    border-radius: 6px;
+    color: #fff;
+}
+ul.product-nav li a {
+	background-color: #f5f5f5;
+	border-radius: 6px;
+}
+#hodophile_medical_product li.product.featured-products {
+    list-style: none;
+    margin-bottom: 42px;
+    padding: 0 15px;
+}
+#hodophile_medical_product .read-more {
+	text-align: center;
+	margin-top: 22px;
+}
+#hodophile_medical_product .read-more  .btn {
+	background-color: #FC5B31;
+	color: #fff;
+}
+#hodophile_medical_product .read-more .btn:hover,
+#hodophile_medical_product .read-more .btn:focus {
+	background-color: #fff;
+	color: #FC5B31;
+	border: 1px solid #FC5B31;
+}
+.tab-content {
+	display: none;
+}
+.tab-content.active {
+	display: block;
+}
+.woocommerce #hodophile_medical_product ul.products li.product a img {
+	height: 250px;
+	object-fit: cover;
+	width: 100%;
+}
+#hodophile_medical_product .view-more {
+	margin-top: 30px;
+}
+/*--------------------------------------------------------------
+#  Woocommerce
+--------------------------------------------------------------*/
+.woocommerce ul.products li.product .onsale,
+.woocommerce span.onsale {
+	position: absolute;
+    right: auto;
+    left: 25px;
+    top: 10px;
+    margin: 0;
+    min-width: auto;
+    min-height: auto;
+    padding: 0;
+    color: #fff;
+    background-color: #FC5B31;
+    line-height: 1.3;
+    padding: 4px 11px;
+    font-weight: 400;
+    border-radius: 0;
+}
+.product_meta a {
+    color: #797973;
+    letter-spacing: 0.06em;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.product_meta a:hover,
+.product_meta a:focus,
+.woocommerce div.product p.price, 
+.woocommerce div.product span.price {
+    color: #FC5B31;
+}
+.woocommerce div.product p.price del {
+	color: #797973;
+    margin-right: 5px;
+}
+.woocommerce div.product .product_meta > span {
+    display: block;
+}
+.woocommerce ul.products li.product .woocommerce-loop-category__title, 
+.woocommerce ul.products li.product .woocommerce-loop-product__title, 
+.woocommerce ul.products li.product h3 {
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-category__title:hover, 
+.woocommerce ul.products li.product .woocommerce-loop-category__title:focus, 
+.woocommerce ul.products li.product .woocommerce-loop-product__title:hover, 
+.woocommerce ul.products li.product .woocommerce-loop-product__title:focus, 
+.woocommerce ul.products li.product h3:hover,
+.woocommerce ul.products li.product h3:focus {
+    color: #FC5B31;
+}
+.woocommerce ul.products li.product .price {
+    color: #FC5B31;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+.woocommerce ul.products li.product .price ins {
+	font-weight: 400;
+}
+.woocommerce ul.products li.product .price del {
+    color: #797973;
+    opacity: 1;
+    font-weight: 500;
+    margin-right: 3px;
+}
+.woocommerce ul.products li.product a img {
+    margin-bottom: 20px;
+}
+.woocommerce ul.products li.product .button {
+    margin-top: 5px;
+}
+.woocommerce #respond input#submit, 
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button {
+    padding: 11px 30px;
+    display: inline-block;
+    text-align: center;
+    background-color: #FC5B31;
+    color: #fff;
+    line-height: 28px;
+    text-decoration: none;
+    font-weight: 500;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.woocommerce #respond input#submit:hover, 
+.woocommerce a.button:hover, 
+.woocommerce button.button:hover, 
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit:focus, 
+.woocommerce a.button:focus, 
+.woocommerce button.button:focus, 
+.woocommerce input.button:focus {
+	background-color: #000;
+	color: #fff;
+}
+
+/*--------------------------------------------------------------
+#  Archive / Blog
+--------------------------------------------------------------*/
+.archive-blog-wrapper .blog-wrapper {
+	background-color: #fff;
+    border-radius: 12px;
+}
+.archive-blog-wrapper .featured-image {
+	background-size: cover;
+    padding: 150px 0;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+}
+.archive-blog-wrapper .entry-container {
+	padding: 30px 25px;
+}
+.archive-blog-wrapper .entry-content p {
+	margin-bottom: 10px;
+}
+.archive-blog-wrapper .entry-title {
+    font-weight: 600;
+}
+.archive-blog-wrapper .posted-on {
+    display: block;
+}
+.archive-blog-wrapper .entry-meta {
+	margin-bottom: 10px;
+}
+.archive-blog-wrapper ul.post-categories {
+    display: inline-block;
+}
+.archive-blog-wrapper .entry-meta > span {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.archive-blog-wrapper .read-more {
+	color: #FC5B31;
+}
+.archive-blog-wrapper .read-more:hover,
+.archive-blog-wrapper .read-more:focus {
+	color: #000;
+}
+.clear:before,
+.clear:after {
+	display: table;
+	clear: both;
+	width: 100%;
+}
+article:before, article:after {
+    display: table;
+    clear: both;
+    width: 100%;
+}
+/*--------------------------------------------------------------
+#  Single
+--------------------------------------------------------------*/
+#inner-content-wrapper {
+    position: relative;
+}
+.single-wrapper .entry-meta span svg {
+    fill: #82868b;
+    margin-right: 10px;
+}
+.single-wrapper .entry-meta span.cat-links svg {
+    margin-right: 7px;
+}
+.single-wrapper .featured-image {
+    margin-bottom: 30px;
+}
+.single-wrapper .entry-meta {
+	margin-bottom: 15px;
+}
+.single-wrapper .entry-meta a, 
+.single-wrapper .entry-meta i {
+	font-size: 18px;
+	font-weight: 400;
+	text-decoration: none;
+}
+/*.single-wrapper .entry-meta > span:not(:last-child):after {
+    content: "/";
+}*/
+.single-wrapper .entry-meta > span.post-categories:after,
+.single-wrapper .entry-meta > span.tags-links:after {
+	display: none;
+}
+.single-wrapper .post-categories + .tags-links {
+    margin-top: 15px;
+    display: block;
+    margin-bottom: 0;
+}
+.single-wrapper .entry-meta > span.tags-links a:hover,
+.single-wrapper .entry-meta > span.tags-links a:focus {
+    background-color: #FC5B31;
+    color: #fff;
+    border-color: #FC5B31;
+}
+.single-wrapper .comment-respond {
+	background-color: transparent;
+	border: none;
+}
+#commentform .comment-form-url,
+.comment-respond p.comment-form-author,
+.comment-respond p.comment-form-email {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+}
+ul.post-categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.post-categories li {
+	display: inline-block;
+}
+ul.post-categories li a,
+.posted-on a {
+    color: #ABABAB;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+}
+ul.post-categories li a:hover,
+ul.post-categories li a:focus {
+	color: #fc5b31;
+}
+.entry-meta > span {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.entry-meta > span:not(:last-child) {
+	margin-right: 15px;
+}
+.entry-meta span:not(:last-child):after {
+    content: "";
+    background-color: #ABABAB;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    top: 16px;
+    right: -12px;
+}
+.widget.widget_trending_post article:not(:last-child) {
+    margin-bottom: 50px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 30px;
+}
+.widget-header {
+    margin-top: 0;
+}
+#secondary .widget-header {
+	margin-bottom: 30px;
+}
+.widget-title,
+#colophon h2 {
+	margin: 0 0 30px 0;
+	font-size: 24px;
+    font-weight: 700;
+    word-wrap: break-word;
+    position: relative;
+}
+.widget.widget_trending_post .featured-image {
+    padding: 165px 0;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+.widget.widget_trending_post article:first-child .featured-image {
+    padding: 215px 0;
+}
+.widget.widget_trending_post .entry-title {
+    margin: 10px 0;
+}
+.widget.widget_trending_post .icon-container {
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    position: relative;
+    z-index: 3;
+}
+.widget.widget_trending_post .icon-container:before {
+    content: "";
+    content: "";
+    background-color: #ffdaed;
+    border: 1px solid #000;
+    content: "";
+    position: absolute;
+    top: 3px;
+    width: 40px;
+    height: 40px;
+    left: -1px;
+    z-index: -2;
+    border-radius: 8px;
+    right: 0;
+}
+.widget.widget_trending_post .entry-content {
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/*--------------------------------------------------------------
+# 					Footer
+--------------------------------------------------------------*/
+#colophon li a{
+	color: #fff;
+}
+#colophon {
+    background-color: #141416;
+    padding-top: 40px;
+    color: #fff;
+}
+.footer-widgets-area a,
+#subscribe-text p {
+    color: #A7A7A7;
+    font-weight: 400;
+    font-size: 18px;
+}
+#colophon li a {
+	text-decoration: none;
+}
+#colophon a:hover,
+#colophon a:focus {
+    color: #FC5B31;
+}
+#colophon h2 {
+    color: #fff;
+}
+#colophon .widget.widget_text img, 
+.aboutwidget img {
+    margin-bottom: 21px;
+    display: inline-block;
+}
+.site-info span {
+	display: block;
+	text-align: center;
+    padding: 5px 0;
+    color: #ebebeb;
+    font-size: 19px;
+}
+.site-info {
+	background-color: #000;
+}
+.site-info,
+.site-info a {
+	margin: 0;
+}
+.site-info .wrapper {
+    border-top: 1px solid rgb(0 0 0 / 10%);
+    padding: 15px 0;
+}
+.site-info .social-icons {
+	text-align: center;
+	line-height: 44px;
+}
+#colophon .site-info a,
+#colophon .site-info a:not(:first-child):hover,
+#colophon .site-info a:not(:first-child):focus {
+	color: #FC5B31;
+    text-decoration: none;
+    font-weight: 400;
+}
+#colophon .site-info a:not(:first-child),
+#colophon .site-info a:hover,
+#colophon .site-info a:focus {
+	color: #fff;
+}
+.footer-widgets-area ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.footer-widgets-area .widget ul li {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.footer-widgets-area .widget ul li:last-child,
+.footer-widgets-area .widget .social-icons li {
+	margin-bottom: 0;
+}
+.footer-widgets-area .hentry {
+	margin-bottom: 45px;
+}
+.footer-widgets-area.col-1 .hentry {
+    text-align: center;
+}
+.footer-widgets-area.col-1 .hentry:last-child {
+	margin-bottom: 0;
+}
+.footer-widgets-area.col-1 .textwidget img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-widgets-area.page-section.col-1 {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#colophon .social-icons li {
+	display: inline-block;
+    width: auto;
+    margin-right: 10px;
+}
+#colophon .social-icons li a {
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    border-radius: 0;
+    background-color: transparent;
+}
+#colophon .social-icons li a svg {
+	fill: #fc5b31;
+}
+#colophon .social-icons li a:hover svg,
+#colophon .social-icons li a:focus svg {
+	fill: #fff;
+}
+.footer-widgets-area .widget.widget_categories ul li {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 10px;
+    background-color: rgb(0 0 0 / 10%);
+    padding: 6px 15px;
+    margin-right: 5px;
+    font-style: italic;
+    border-radius: 50px;
+}
+.footer-widgets-area .widget.widget_categories ul li a {
+    font-style: italic;
+}
+.textwidget {
+	padding-right: 30px;
+}
+.textwidget p {
+	font-size: 18px;
+	color: #919192;
+}
+#subscribe-text {
+	margin-bottom: 25px;
+}
+.jetpack_subscription_widget form {
+	position: relative;
+}
+.jetpack_subscription_widget input[type="email"] {
+	background-color: transparent;
+	border: 1px solid #434345;
+	height: 50px;
+	color: #fff!important;
+	padding: 0 20px;
+	border-radius: 50px;
+}
+.jetpack_subscription_widget #subscribe-submit {
+    display: inline-block;
+    margin: 0;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+.jetpack_subscription_widget #subscribe-submit svg {
+	fill: #fff;
+	width: 20px;
+	height: 20px;
+	margin: 0 0 3px 4px;	
+}
+.jetpack_subscription_widget button {
+	padding: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.comment-text .meta strong {
+    padding-right: 5px;
+}
+
+.comment-reply-link{
+	margin-top: 10px;
+}
+
+.woocommerce .quantity .qty {
+    width: 7em;
+}
+
+.single-post #wp-travel_rate,
+.single-post .wp-travel-average-review{
+	display: none;
+}
+
+.wp-block-search__button {
+    padding: 0.2em 0.625em !important;
+}
+
+.wp-travel-filter-button .btn-wp-travel-filter {
+    padding: 2px 17px;
+}
+
+.wp-travel-toolbar .wp-travel-post-filter{
+	padding: 15px 0px;
+}
+
+.wp-travel-toolbar .wp_travel_input_filters {
+    height: 36px;
+}
+
+#wp-travel-secondary .wp-travel-default-article .wp-travel-entry-content-wrapper .description-left .entry-header, 
+.wp-travel-itinerary-items .wp-travel-post-item-wrapper .post-title {
+     padding-left: 0px !important; 
+}
+
+#wp-travel-secondary .wp-travel-default-article .wp-travel-entry-content-wrapper .description-left .entry-header {
+	padding-top: 10px !important;
+     padding-left: 20px !important; 
+}
+
+.wp-travel-toolbar .wp-travel-post-filter .wp-travel-filter-by-heading h4 {
+    font-size: 18px;
+}
+.wp-travel-add-to-wishlists {
+    top: 22px !important;
+    left: 300px !important;
+}
+@media (max-width: 992px){
+	.wp-travel-default-article .description-left .wp-travel-add-to-wishlists {
+	    top: 20px !important;
+	}
+}
+
+.archive .page-section .page-header{
+	display: none;
+}
+
+#wp-travel-secondary .wp-travel-entry-content-wrapper .wp-travel-add-to-wishlists {
+    top: 20px !important;
+    left: 0px !important;
+}
+
+@media (max-width: 768px){
+	.wp-travel-default-article .wp-travel-entry-content-wrapper .description-left .entry-title {
+	    margin-top: 12px !important;
+	}
+}
+
+.trip-location a,
+.btn-wp-travel-filter:hover,
+.wp-element-button:hover,
+.wp-travel-form-field input[type="submit"],
+.wp-travel-calendar-view .wp-travel-booking__pricing-wrapper .wp-travel-booking__pricing-name button,
+.wp-travel-calendar-view .wp-travel-booking__datepicker-wrapper .react-datepicker-wrapper .react-datepicker__input-container .wp-travel-date-picker-btn,
+.product_meta a{
+	text-decoration: none;
+}
+
+.single-itineraries .wp-travel-add-to-wishlists {
+    top: 8px !important;
+    left: 0px !important;
+}
+.woocommerce-noreviews{
+	margin-bottom: 15px !important;
+}
+
+.woocommerce-cart table.cart td.actions .coupon .input-text{
+	padding: 10px 6px 10px;
+}
+
+.wp-travel-EditAccountForm .selectpicker {
+	height: 40px;
+}
+
+.wp-travel-tab-wrapper .tab-list.resp-tabs-list .slick-next, 
+.wp-travel-tab-wrapper .tab-list.resp-tabs-list .slick-prev {
+    top: 33px !important;
+}
+
+.wp-travel-tab-wrapper .wp-travel button.slick-arrow.slick-prev::before {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.wp-travel-tab-wrapper .wp-travel button.slick-arrow.slick-prev::before, .wp-travel-tab-wrapper .wp-travel button.slick-arrow.slick-next::before {
+	left: 10px;
+}
+
+#wp-travel-tab-wrapper #slider-tab .slick-prev:before, #wp-travel-tab-wrapper #slider-tab .slick-next:before {
+     background-image: none;
+}
+
+@media (min-width: 993px){
+	.wp-travel-tab-wrapper .tab-list.resp-tabs-list {
+	    height: 67px !important;
+	}
+
+}
+
+
+.wp-travel-ert.gallery{
+	width: auto;
+}
+
+#hodophile_trip_search_section input[type="text"] {
+	padding: 0px 20px;
+}
+
+.wp-travel-feature-slide-content .entry-title{
+	font-size: 28px;
+}
+
+.trip-price {
+    font-size: 18px;
+}
+
+.wp-travel-itinerary-items .wp-travel-itinerary-list li{
+	border: none;
+	background-color: transparent;
+}
+
+.wp-travel-itinerary-items .wp-travel-post-item-wrapper .post-title a{
+	font-size: 24px;
+	margin-left: 30px;
+}
+
+.grid-view .wp-travel-add-to-wishlists {
+    top: 10px !important;
+    left: 20px !important;
+}
+
+.grid-view .wp-travel-review-text:after{
+	content: none !important;
+}
+
+.grid-view .wp-travel-post-info{
+	margin-top: 15px;
+}
+
+.wp-travel-itinerary-list{
+	padding-left: 0px;
+}
+
+#wptravel-tg-btnContainer,
+.wptravel-travel-guide-heading,
+.no-sidebar #secondary{
+	display: none;
+}
+
+.wptravel-tg-list-view-row ul,
+#wp-travel-travel-guide-fornt-guide-tab-template ul{
+	padding-left: 0px;
+}
+
+
+.wptravel-tg-social svg,
+.wptravel-tg-list-view-row svg,
+#wp-travel-travel-guide-fornt-guide-tab-template svg {
+    width: 25px;
+    height: 25px;
+}
+
+.wptravel-tourguide-trip-list h3,
+.wptravel-tourguide-guidename{
+	font-size: 32px !important;
+}
+
+.wptravel-travel-guide-Review,
+.post-type-archive-travel-guide .grid-layout .entry-container{
+	background-color: #fff;
+}
+
+.wptravel-tourguide-container {
+    padding: 100px 10px !important;
+}
+.widget_wp_travel_filter_search_widget input,
+.widget_wp_travel_filter_search_widget select{
+    max-width: 100%;
+    background-color: #ffffff;
+}
+
+
+.widget_wp_travel_filter_search_widget .trip-duration-calender .calender-icon {
+    top: 35px;
+    left: 7px;
+}
+
+.widget_wp_travel_search input.button,
+.widget_wp_travel_filter_search_widget input.button{
+	padding: 5px 30px;
+}
+
+@media screen and (min-width: 992px){
+	#wp-travel-secondary .wp-travel-search form {
+	    clear: both;
+	    display: block;
+	    align-items: center;
+	    margin-bottom: 10px;
+	}
+}
+
+#wp-travel-secondary .wp-travel-search form,
+#wp-travel-secondary .wp-travel-search p{
+	margin-bottom: 10px;
+}
+
+
+.woocommerce a.added_to_cart {
+    padding-left: 10px;
+}
+
+.select2-billing_country-results li {
+	color: #000;
+}
+
+#wp-travel-enquiries .wp-travel-enquiry-subscribe-section input {
+    height: 12px;
+}
+
+.wp-travel-tab-wrapper .tab-list-content.resp-tab-content-active,
+.widget-area .wp-travel-default-article .wp-travel-entry-content-wrapper, .footer-inner-wrapper .wp-travel-default-article .wp-travel-entry-content-wrapper {
+    background: #fff;
+}
+
+
+/*--------------------------------------------------------------
+# Dark Version
+--------------------------------------------------------------*/
+
+.dark-version .slick-prev:before, .dark-version .slick-next:before, .dark-version .slick-prev:before, .dark-version .slick-next:before {
+    -webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    -ms-filter: brightness(0) invert(1);
+    -o-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.dark-version #secondary .wp-travel-default-article .wp-travel-entry-content-wrapper .description-right,
+.dark-version #wp-travel-secondary .wp-travel-default-article .wp-travel-entry-content-wrapper .description-right,
+.dark-version #secondary .wp-travel-default-article,
+.dark-version #wp-travel-secondary .wp-travel-default-article {
+    border: 1px solid #60585800 !important;
+}
+
+
+.dark-version .checkout-page-wrap .wp-travel-form-field select,
+.dark-version .checkout-page-wrap input[type="text"], 
+.dark-version .checkout-page-wrap input[type="email"], 
+.dark-version .checkout-page-wrap input[type="url"], 
+.dark-version .checkout-page-wrap input[type="password"], 
+.dark-version .checkout-page-wrap input[type="search"], 
+.dark-version .checkout-page-wrap input[type="number"], 
+.dark-version .checkout-page-wrap input[type="tel"], 
+.dark-version .checkout-page-wrap input[type="range"], 
+.dark-version .checkout-page-wrap input[type="date"], 
+.dark-version .checkout-page-wrap input[type="month"], 
+.dark-version .checkout-page-wrap input[type="week"], 
+.dark-version .checkout-page-wrap input[type="time"], 
+.dark-version .checkout-page-wrap input[type="datetime"], 
+.dark-version .checkout-page-wrap input[type="datetime-local"], 
+.dark-version .checkout-page-wrap input[type="color"], 
+.dark-version .checkout-page-wrap textarea,
+.dark-version .wp-travel-calendar-view .wp-travel-booking__pricing-wrapper .wp-travel-booking__pricing-name button,
+.dark-version #user-email-address,
+.dark-version #send-email .send_email_checkbox,
+.dark-version #faq h4:hover,
+.dark-version .dashboard-tab ul.resp-tabs-list,
+.dark-version .wp-travel-booking__panel-bottom,
+.dark-version .wp-travel-trip-code code,
+.dark-version .wp-travel-tab-wrapper .tab-list.resp-tabs-list .slick-next, 
+.dark-version .wp-travel-tab-wrapper .tab-list.resp-tabs-list .slick-prev,
+.dark-version .wp-travel-tab-wrapper .tab-list.resp-tabs-list li.resp-tab-active,
+.dark-version .wp-travel-tab-wrapper .tab-list-content.resp-tab-content-active,
+.dark-version #wp-travel-tab-content-bookings .my-order,
+.dark-version .resp-vtabs .resp-tabs-container,
+.dark-version {
+    background-color: #000;
+}
+
+.dark-version .wp-travel-tab-wrapper .tab-list.resp-tabs-list {
+	border: 1px solid #fff;
+}
+
+.dark-version .wp-travel-tab-wrapper .wp-travel button.slick-arrow.slick-prev {
+    border-right: 1px solid #ebebeb;
+}
+
+.dark-version .wp-travel-tab-wrapper .wp-travel button.slick-arrow.slick-next,
+.dark-version .wp-travel-tab-wrapper .wp-travel button.slick-arrow.slick-prev {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.dark-version .wp-travel-checkout-section{
+	border: 2px solid #fff;
+    padding: 20px;
+}
+
+.dark-version .wp-block-preformatted,
+.dark-version .widget-area .wp-travel-default-article .wp-travel-entry-content-wrapper, 
+.dark-version .footer-inner-wrapper .wp-travel-default-article .wp-travel-entry-content-wrapper,
+.dark-version  #wp-travel-enquiries,
+.dark-version .widget_wp_travel_filter_search_widget .trip-duration-calender .calender-icon,
+.dark-version .wp-travel-itinerary-items .wp-travel-post-wrap-bg,
+.dark-version .wptravel-sidebar-wrapper,
+.dark-version .wptravel-travel-guide-Review,
+.dark-version.single-travel-guide.wptravel-layout-v2 .wptravel-archive-wrapper .view-box{
+	background-color: #222  !important;
+}
+
+.dark-version.post-type-archive-travel-guide .grid-layout .entry-container,
+.dark-version.wptravel-layout-v2 .wptravel-archive-wrapper .view-box{
+	background-color: #111 !important;
+}
+
+.dark-version .wptravel-tourguide-all-trip,
+.dark-version #wp-travel-tab-wrapper h2.resp-tab-active,
+.dark-version .entry-meta .category-list-items .sub-category-menu,
+.dark-version .wp-block-search__inside-wrapper input#wp-block-search__input-1,
+.dark-version .wp-travel-toolbar,
+.dark-version .wp-travel-notice-success,
+.dark-version #shopping-cart .cart-summary,
+.dark-version .checkout-accordion .panel-default,
+.dark-version .checkout-page-wrap .wp-travel-checkout-section,
+.dark-version #faq .panel-default,
+.dark-version .dashboard-tab select,
+.dark-version .wp-travel-calendar-view,
+.dark-version .wp-travel-calendar-view .wp-travel-booking__pricing-wrapper .wp-travel-booking__trip-option-list li,
+.dark-version .wp-travel-calendar-view .wp-travel-booking__pricing-wrapper,
+.dark-version .resp-vtabs li.resp-tab-active,
+.dark-version #wp-travel-tab-content-bookings .my-order .table-wrp,
+.dark-version .wc_payment_methods.payment_methods,
+.dark-version .form-row.place-order,
+.dark-version .wp-tab-review-inner-wrapper .commentlist li,
+.dark-version .pagination .page-numbers, 
+.dark-version .pagination .page-numbers.prev, 
+.dark-version .pagination .page-numbers.next,
+.dark-version .navigation.post-navigation, 
+.dark-version .navigation.posts-navigation,
+.dark-version .comment-content,
+.dark-version input[type="text"], 
+.dark-version input[type="email"], 
+.dark-version input[type="url"], 
+.dark-version input[type="password"], 
+.dark-version input[type="search"], 
+.dark-version input[type="number"], 
+.dark-version input[type="tel"], 
+.dark-version input[type="range"], 
+.dark-version input[type="date"], 
+.dark-version input[type="month"], 
+.dark-version input[type="week"], 
+.dark-version input[type="time"], 
+.dark-version input[type="datetime"], 
+.dark-version input[type="datetime-local"], 
+.dark-version input[type="color"], 
+.dark-version textarea,
+.dark-version .wp-travel-tab-wrapper .tab-list.resp-tabs-list,
+.dark-version .wp-travel-search form,
+.dark-version #hodophile_popular_destination_section .destination-wrapper,
+.dark-version #hodophile_blog_section .blog-wrapper, 
+.dark-version #hodophile_testimonial_section .testimonial-wrapper,
+.dark-version #hodophile_subscription .subscribe-wrapper,
+.dark-version #hodophile_upcoming_event .entry-container,
+.dark-version #hodophile_speaker .entry-container,
+.dark-version.third-design #hodophile_recent_post .recent-post-wrapper,
+.dark-version #hodophile_we_have .we-have-wrapper,
+.dark-version .archive-blog-wrapper .blog-wrapper {
+	background-color: #111;
+}
+
+.dark-version .wp-travel-EditAccountForm input[type="email"],
+.dark-version .wp-travel-EditAccountForm .selectpicker{
+	border-color: #111;
+}
+
+.dark-version .pagination .page-numbers.current, 
+.dark-version .pagination .page-numbers:hover, 
+.dark-version .pagination .page-numbers:focus {
+    border-color: #FC5B31;
+    background-color: #FC5B31;
+}
+
+.dark-version .woocommerce table.shop_table td{
+	border-top: 1px solid rgb(255 255 255);
+}
+
+.dark-version .woocommerce table.shop_table{
+	border: 1px solid rgb(255 255 255);
+}
+
+.dark-version,
+.dark-version .wp-travel-single-guide h3.section-title, 
+.dark-version .wptravel-tourguide-trip-list h3,
+.dark-version .wp-travel-itinerary-items .wp-travel-post-wrap-bg .trip-price ins,
+.dark-version #shopping-cart .cart-summary .list-group li>div .trip-content .trip-item-name-price .trip-name h5 a,
+.dark-version .wp-travel-calendar-view .wp-travel-booking__pricing-wrapper .wp-travel-booking__pricing-name h4,
+.dark-version .wp-travel-calendar-view .wp-travel-booking__pricing-wrapper .wp-travel-booking__pricing-name button,
+.dark-version .dashboard-tab ul.resp-tabs-list li,
+.dark-version .dashboard-tab select,
+.dark-version .dashboard-tab table.order-list-table th,
+.dark-version #wp-travel-tab-content-bookings .my-order .order-wrapper > h3,
+.dark-version .woocommerce-checkout-review-order-table .product-name,
+.dark-version .checkout-page-wrap .wp-travel-form-field select,
+.dark-version .woocommerce-checkout-review-order-table .product-total,
+.dark-version .woocommerce-info .showcoupon,
+.dark-version .woocommerce-cart-form .shop_table thead tr th,
+.dark-version .cart-subtotal th,
+.dark-version .order-total th,
+.dark-version h1,
+.dark-version h2, 
+.dark-version h3,
+.dark-version h4,
+.dark-version h5,
+.dark-version h6,
+.dark-version p,
+.dark-version a,
+.dark-version figcaption,
+.dark-version cite,
+.dark-version blockquote,
+.dark-version pre,
+.dark-version .pagination .page-numbers, 
+.dark-version .pagination .page-numbers.dots:hover, 
+.dark-version .pagination .page-numbers.dots:focus, 
+.dark-version .pagination .page-numbers.prev, 
+.dark-version .pagination .page-numbers.next,
+.dark-version ul.post-categories li a,
+.dark-version #secondary ul li a,
+.dark-version #respond label,
+.dark-version .navigation.post-navigation a, 
+.dark-version .navigation.posts-navigation a,
+.dark-version .comment-meta .url, 
+.dark-version .comment-meta .fn,
+.dark-version input[type="text"], 
+.dark-version input[type="email"], 
+.dark-version input[type="url"], 
+.dark-version input[type="password"], 
+.dark-version input[type="search"], 
+.dark-version input[type="number"], 
+.dark-version input[type="tel"], 
+.dark-version input[type="range"], 
+.dark-version input[type="date"], 
+.dark-version input[type="month"], 
+.dark-version input[type="week"], 
+.dark-version input[type="time"], 
+.dark-version input[type="datetime"], 
+.dark-version input[type="datetime-local"], 
+.dark-version input[type="color"], 
+.dark-version textarea,
+.dark-version .dashboard-tab .box-content a,
+.dark-version #colophon h2,
+.dark-version.woocommerce del,
+.dark-version.wptravel-layout-v2 .wptravel-archive-wrapper .view-box .view-content .left-content .trip-icons span,
+.dark-version .wp-travel-search p input[type=text], 
+.dark-version .wp-travel-search p span.title, 
+.dark-version .wp-travel-search p select,
+.dark-version .wp-travel-search p label,
+.dark-version #hodophile_popular_destination_section .trip-price ins > span,
+.dark-version #hodophile_blog_section .read-more:hover, 
+.dark-version #hodophile_blog_section .read-more:focus,
+.dark-version #hodophile_popular_destination_section .view-more .btn, 
+.dark-version #hodophile_latest_post .view-more .btn, 
+.dark-version #hodophile_gallery_section .view-more .btn, 
+.dark-version #hodophile_upcoming_event .view-more .btn, 
+.dark-version #hodophile_medical_product .view-more .btn, 
+.dark-version #hodophile_blog_section .view-more .btn,
+.dark-version.second-design .posted-on a,
+.dark-version .event-time,
+.dark-version .wp-travel-calendar-view .wp-travel-booking__pricing-wrapper .wp-travel-booking__trip-option-list li .item-price > span,
+.dark-version #wp-travel-tab-content-bookings .my-order table.order-list-table th,
+.dark-version #wp-travel-tab-content-bookings .my-order table.order-list-table td,
+.dark-version span.event-time i,
+.dark-version.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content .right-content .footer-wrapper .trip-price .price-here,
+.dark-version.fourth-design #hodophile_testimonial_section .section-title,
+.dark-version .archive-blog-wrapper .read-more:hover,
+.dark-version .archive-blog-wrapper .read-more:focus {
+    color: #fff;
+}
+.dark-version a:hover,
+.dark-version a:focus,	
+.dark-version  ul.post-categories li a:hover, 
+.dark-version  ul.post-categories li a:focus,
+.dark-version  .entry-title a:hover, 
+.dark-version  .entry-title a:focus,
+.dark-version #hodophile_featured_post_section .entry-title a:hover,
+.dark-version #hodophile_featured_post_section .entry-title a:focus,
+.dark-version .byline a:hover,
+.dark-version .byline a:focus,
+.dark-version.second-design .posted-on a:hover,
+.dark-version.second-design .posted-on a:focus,
+.dark-version .location a:hover,
+.dark-version .location a:focus,
+.dark-version .section-subtitle,
+.dark-version #secondary ul li a:hover,
+.dark-version #secondary ul li a:focus,
+.dark-version .navigation.post-navigation a:hover,
+.dark-version .navigation.post-navigation a:focus,
+.dark-version .comment-meta .url:hover,
+.dark-version .comment-meta .url:focus {
+	color: #FC5B31;
+}
+
+.dark-version .tabs li.active svg {
+	color: #000;
+	fill: #000;
+}
+
+.dark-version #shopping-cart .cart-summary .cart-header .title svg path,
+.dark-version .navigation.pagination svg,
+.dark-version .navigation.posts-navigation svg, 
+.dark-version .navigation.post-navigation svg,
+.dark-version .tabs svg,
+.dark-version .jetpack_subscription_widget svg,
+.dark-version #colophon .social-icons li a svg,
+.dark-version #hodophile_popular_destination_section .duration svg {
+	fill: #fff;
+}
+.dark-version .pagination .page-numbers, 
+.dark-version .pagination .page-numbers.dots:hover, 
+.dark-version .pagination .page-numbers.dots:focus, 
+.dark-version .pagination .page-numbers.prev, 
+.dark-version .pagination .page-numbers.next,
+.dark-version input[type="text"], 
+.dark-version input[type="email"], 
+.dark-version input[type="url"], 
+.dark-version input[type="password"], 
+.dark-version input[type="search"], 
+.dark-version input[type="number"], 
+.dark-version input[type="tel"], 
+.dark-version input[type="range"], 
+.dark-version input[type="date"], 
+.dark-version input[type="month"], 
+.dark-version input[type="week"], 
+.dark-version input[type="time"], 
+.dark-version input[type="datetime"], 
+.dark-version input[type="datetime-local"], 
+.dark-version input[type="color"], 
+.dark-version textarea {
+	border-color: #111;
+}
+.dark-version .btn:hover,
+.dark-version .btn:focus {
+	background-color: #fff;
+	border-color: #fff;
+	color: #000;
+}
+
+.dark-version .wp-travel-itinerary-items input[type="text"],
+.dark-version .category-title:after {
+	background-color: #fff;
+}
+.dark-version .site-logo img,
+.dark-version #hodophile_partners article img,
+.dark-version #colophon .widget.widget_text img,
+.dark-version.fourth-design #hodophile_testimonial_section .slick-next:before, 
+.dark-version.fourth-design #hodophile_testimonial_section .slick-prev:before {
+	-webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    -ms-filter: brightness(0) invert(1);
+    -o-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.dark-version #select2-billing_state-results li,
+.dark-version #select2-billing_country-results li,
+.dark-version .woocommerce-info .showcoupon,
+.dark-version .cart-empty.woocommerce-info,
+.dark-version .wp-travel-search p select option,
+.dark-version #hodophile_featured_post_section .entry-title a {
+	color: #000;
+}
+
+.dark-version input[type="email"] {
+	border-color: #fff;
+}
+
+.dark-version #hodophile_department article {
+    border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.dark-version #hodophile_speaker .social-icons li a {
+	background-color: #fff;
+}
+
+@media screen and (max-width: 567px) {
+	.dark-version .site-branding {
+	    border-bottom-color: rgb(255 255 255 / 30%);
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.dark-version .main-navigation ul.nav-menu > li > a,
+	.dark-version  .main-navigation ul.nav-menu > li.current-menu-item > a {
+		color: #fff;
+	}
+	.dark-version  .main-navigation ul.nav-menu > li:hover > a, 
+	.dark-version .main-navigation ul.nav-menu > li:focus > a {
+		color: #FC5B31;
+	}
+	.dark-version #masthead .main-navigation .social-icons ul li a svg,
+	.dark-version .main-navigation ul.nav-menu > li.current-menu-item > a > svg,
+	.dark-version.second-design #masthead .main-navigation .login-register ul li a svg {
+	    fill: #fff;
+	} 
+	.dark-version .main-navigation ul.nav-menu li:hover > svg, 
+	.dark-version .main-navigation ul.nav-menu li:focus > svg,
+	.dark-version .main-navigation li.menu-item-has-children:hover > a > svg, 
+	.dark-version .main-navigation li.menu-item-has-children > a:hover > svg, 
+	.dark-version .main-navigation li.menu-item-has-children > a:focus > svg {
+		fill: #FC5B31;
+	}
+	.dark-version .main-navigation ul.nav-menu > li.current-menu-item > a:before {
+		background-color: #fff;
+	}
+}
+
+
+/*--------------------------------------------------------------
+# Typography Options
+--------------------------------------------------------------*/
+.header-font-1 h1,
+.header-font-1 h2,
+.header-font-1 h3,
+.header-font-1 h4,
+.header-font-1 h5,
+.header-font-1 h6,
+.header-font-1 button,
+.header-font-1 input[type="button"],
+.header-font-1 input[type="reset"],
+.header-font-1 input[type="submit"],
+.header-font-1 .site-title,
+.header-font-1 .main-navigation a,
+.header-font-1 .reply a,
+.header-font-1 .section-subtitle,
+.header-font-1 .btn,
+.header-font-1.woocommerce #respond input#submit, 
+.header-font-1.woocommerce a.button, 
+.header-font-1.woocommerce button.button, 
+.header-font-1.woocommerce input.button,
+.header-font-1 #faq-section .faq-trigger,
+.header-font-1 .progress-bar div span,
+.header-font-1 #contact-section .contact-information li {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.header-font-2 h1,
+.header-font-2 h2,
+.header-font-2 h3,
+.header-font-2 h4,
+.header-font-2 h5,
+.header-font-2 h6,
+.header-font-2 button,
+.header-font-2 input[type="button"],
+.header-font-2 input[type="reset"],
+.header-font-2 input[type="submit"],
+.header-font-2 .site-title,
+.header-font-2 .main-navigation a,
+.header-font-2 .reply a,
+.header-font-2 .section-subtitle,
+.header-font-2 .btn,
+.header-font-2.woocommerce #respond input#submit, 
+.header-font-2.woocommerce a.button, 
+.header-font-2.woocommerce button.button, 
+.header-font-2.woocommerce input.button,
+.header-font-2 #faq-section .faq-trigger,
+.header-font-2 .progress-bar div span,
+.header-font-2 #contact-section .contact-information li {
+    font-family: 'Cherry Swash', sans-serif;
+}
+
+.header-font-3 h1,
+.header-font-3 h2,
+.header-font-3 h3,
+.header-font-3 h4,
+.header-font-3 h5,
+.header-font-3 h6,
+.header-font-3 button,
+.header-font-3 input[type="button"],
+.header-font-3 input[type="reset"],
+.header-font-3 input[type="submit"],
+.header-font-3 .site-title,
+.header-font-3 .main-navigation a,
+.header-font-3 .reply a,
+.header-font-3 .section-subtitle,
+.header-font-3 .btn,
+.header-font-3.woocommerce #respond input#submit, 
+.header-font-3.woocommerce a.button, 
+.header-font-3.woocommerce button.button, 
+.header-font-3.woocommerce input.button,
+.header-font-3 #faq-section .faq-trigger,
+.header-font-3 .progress-bar div span,
+.header-font-3 #contact-section .contact-information li {
+    font-family: 'Philosopher', sans-serif;
+}
+
+.header-font-4 h1,
+.header-font-4 h2,
+.header-font-4 h3,
+.header-font-4 h4,
+.header-font-4 h5,
+.header-font-4 h6,
+.header-font-4 button,
+.header-font-4 input[type="button"],
+.header-font-4 input[type="reset"],
+.header-font-4 input[type="submit"],
+.header-font-4 .site-title,
+.header-font-4 .main-navigation a,
+.header-font-4 .reply a,
+.header-font-4 .section-subtitle,
+.header-font-4 .btn,
+.header-font-4.woocommerce #respond input#submit, 
+.header-font-4.woocommerce a.button, 
+.header-font-4.woocommerce button.button, 
+.header-font-4.woocommerce input.button,
+.header-font-4 #faq-section .faq-trigger,
+.header-font-4 .progress-bar div span,
+.header-font-4 #contact-section .contact-information li {
+    font-family: 'Slabo 27px', sans-serif;
+}
+
+.header-font-5 h1,
+.header-font-5 h2,
+.header-font-5 h3,
+.header-font-5 h4,
+.header-font-5 h5,
+.header-font-5 h6,
+.header-font-5 button,
+.header-font-5 input[type="button"],
+.header-font-5 input[type="reset"],
+.header-font-5 input[type="submit"],
+.header-font-5 .site-title,
+.header-font-5 .main-navigation a,
+.header-font-5 .reply a,
+.header-font-5 .section-subtitle,
+.header-font-5 .btn,
+.header-font-5.woocommerce #respond input#submit, 
+.header-font-5.woocommerce a.button, 
+.header-font-5.woocommerce button.button, 
+.header-font-5.woocommerce input.button,
+.header-font-5 #faq-section .faq-trigger,
+.header-font-5 .progress-bar div span,
+.header-font-5 #contact-section .contact-information li {
+    font-family: 'Dosis', sans-serif;
+}
+
+.body-font-1 {
+    font-family: 'News Cycle', sans-serif;
+}
+
+.body-font-2 {
+    font-family: 'Pontano Sans', sans-serif;
+}
+
+.body-font-3 {
+    font-family: 'Gudea', sans-serif;
+}
+
+.body-font-4 {
+    font-family: 'Quattrocento Sans', sans-serif;
+}
+
+.body-font-5 {
+    font-family: 'Khand', sans-serif;
+}
+
+
+/*--------------------------------------------------------------
+# 					RESPONSIVE
+--------------------------------------------------------------*/
+@media screen and (min-width: 567px) {
+	.col-2,
+	.col-3,
+	.col-4,
+	.col-5,
+	.col-6 {
+		margin: 0 -15px;
+	}
+	.col-2 article,
+	.col-3 article,
+	.col-4 article,
+	.col-5 article,
+	.col-6 article {
+		padding: 0 15px;
+		float: left;
+		width: 50%;
+		margin-bottom: 30px;
+	}
+	.col-2 article:nth-last-child(-n+2),
+	.col-3 article:nth-last-child(-n+2),
+	.col-4 article:nth-last-child(-n+2),
+	.col-5 article:nth-last-child(-n+2),
+	.col-6 article:nth-last-child(-n+2) {
+		margin-bottom: 0;
+	}
+	.archive-blog-wrapper .post-footer-meta {
+	    display: flex;
+	    justify-content: space-between;
+	}
+	#reply-title, 
+	.comments-title {
+		font-size: 42px;
+	}
+	#comments ol.children {
+	    padding-left: 110px;
+	}
+	.right-sidebar #secondary, 
+	.left-sidebar #secondary {
+		margin-top: 50px;
+	}
+	#secondary .widget_social_icons li a svg {
+		width: 30px;
+		height: 30px;
+	}
+	.footer-widgets-area.col-2 .hentry,
+	.footer-widgets-area.col-4 .hentry {
+		width: 50%;
+		float: left;
+	}
+	.footer-widgets-area.col-2 .hentry:nth-child(2n+1),
+	.footer-widgets-area.col-4 .hentry:nth-child(2n+1) {
+		clear: left;
+	}
+	.footer-widgets-area.col-2 .hentry:nth-child(odd),
+	.footer-widgets-area.col-4 .hentry:nth-child(odd) {
+		padding-right: 40px;
+	}
+	.footer-widgets-area.col-2 .hentry:nth-last-child(-n+2),
+	.footer-widgets-area.col-4 .hentry:nth-last-child(-n+2) {
+		margin-bottom: 0;
+	}
+	#hodophile_hero_banner article,
+	#hodophile_gallery_section ul li {
+		width: 50%;
+		float: left;
+	}
+	#hodophile_subscription form {
+		position: relative;
+	}
+	#hodophile_subscription form #subscribe-submit {
+		margin-top: 0;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+	#hodophile_medical_product .col-4 li {
+		width: 50%;
+		float: left;
+	}
+	.product-nav li {
+    	display: inline-block;
+    	padding-right: 15px;
+	}
+}
+@media screen and (min-width: 767px) {
+    .col-1 .hentry {
+        width: 100%;
+    }
+    .col-2 .hentry {
+        width: 50%;
+        float: left;
+    }
+    .col-3 .hentry,
+    #hodophile_medical_product .col-4 li {
+        width: 33.33%;
+        float: left;
+    }
+    .col-4 .hentry {
+        width: 50%;
+        float: left;
+    }
+    .col-5 .hentry {
+        width: 20%;
+        float: left;
+    }
+    .col-6 .hentry {
+        width: 16.66%;
+        float: left;
+    }
+	.col-3 article,
+	.col-5 article,
+	.col-6 article {
+		width: 33.33%;
+	}
+	.col-3 article:nth-child(2n+1),
+	.col-5 article:nth-child(2n+1),
+	.col-6 article:nth-child(2n+1) {
+		clear: none;
+	}
+	.col-3 article:nth-child(3n+1),
+	.col-5 article:nth-child(3n+1),
+	.col-6 article:nth-child(3n+1) {
+		clear: left;
+	}
+	.col-3 article:nth-last-child(-n+3),
+	.col-5 article:nth-last-child(-n+3),
+	.col-6 article:nth-last-child(-n+3) {
+		margin-bottom: 0;
+	}
+    blockquote.alignright {
+	    width: -webkit-calc(50% - 0.736842105em);
+	    width: calc(50% - 0.736842105em);
+        margin-top: 10px;
+        margin-bottom: 25px;
+	}
+	.single-wrapper #reply-title {
+	    margin-bottom: 40px;
+	    font-size: 42px;
+	}
+	.single-itineraries #page-site-header .page-title {
+		font-size: 32px;
+	}
+	.single-itineraries #page-site-header .header-wrapper {
+		padding: 50px 0;
+	}
+	.single #booking .availabily-list {
+	    border: 1px solid #ddd;
+	}
+	.single #booking .availabily-heading {
+	    border-bottom: 1px solid #ddd;
+	    padding-bottom: 0;
+	}
+	.single #booking .availabily-heading > div,
+	.single #booking ul.availabily-list li > form > div {
+	    padding: 8px 5px;
+	    border-right: 1px solid #ddd;
+	    text-align: center;
+	}
+	.single #booking .availabily-heading > div:last-child,
+	.single #booking ul.availabily-list li > form > div.action {
+		border-right: none;
+	}
+	.single #booking ul.availabily-list li > form {
+	    margin: 0;
+        padding: 0;
+	    border-bottom: none;
+	}
+	.single #booking ul.availabily-list .availabily-content .btn {
+	    padding: 3px 15px;
+	    min-width: auto;
+	    font-size: 14px;
+	    font-weight: 400;
+	}
+	.comment-navigation .nav-previous, 
+	.posts-navigation .nav-previous, 
+	.post-navigation .nav-previous {
+	    padding-right: 25px;
+	}
+	.comment-navigation .nav-next, 
+	.posts-navigation .nav-next, 
+	.post-navigation .nav-next {
+		padding-left: 25px;
+	}
+	.footer-logo-wrapper {
+	    display: flex;
+	    flex-wrap: wrap;
+        align-items: center;
+	}
+	.footer-logo-wrapper > div, 
+	.footer-logo-wrapper > ul {
+		width: 50%;
+	    text-align: left;
+	    padding: 40px 0;
+	}
+	.footer-logo-wrapper > ul {
+	    text-align: right;
+	}
+	.footer-logo-wrapper > div + ul {
+	    padding: 40px 0;
+	}
+	.footer-widgets-area.col-3 .hentry {
+		margin-bottom: 0;
+	}
+	.footer-widgets-area.col-3 .hentry:not(:last-child) {
+		padding-right: 40px;
+	}
+	.site-info.col-2 span {
+		float: left;
+		width: 50%;
+		text-align: left;
+	}
+	.site-info.col-2 span:nth-child(2) {
+		float: right;
+		text-align: right;
+	}
+	.site-info.col-2 .social-icons {
+		text-align: right;
+		float: right;
+	}
+	#hodophile_gallery_section ul {
+		display: flex;
+	}
+	#hodophile_latest_post .lastest-post-wrapper {
+		display: table;
+		position: relative;
+		align-items: center;
+		width: 100%;
+	}
+	#hodophile_latest_post .featured-image {
+		width: 40%;
+		position: absolute;
+		display: table-cell;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		top: 0;
+		padding: 0;
+		margin-bottom: 0;
+	}
+	#hodophile_latest_post .entry-container {
+		text-align: unset;
+		width: 60%;
+		display: table-cell;
+		padding: 40px 36px;
+	}
+	#hodophile_timer {
+		padding-top: 0;
+	}
+	#hodophile_timer #timer div {
+		display: inline-block;
+		font-size: 52px;
+	}
+	#hodophile_timer #timer div:not(:last-child) {
+		margin-bottom: 0;
+		margin-right: 40px;
+	}
+	#hodophile_timer #timer div span {
+		display: block;
+		margin-top: 20px;
+		margin-left: 0;
+	}
+	#hodophile_timer #timer {
+		margin-top: -70px;
+		position: relative;
+		z-index: 300;
+		padding: 70px;
+	}
+	#hodophile_we_have {
+		padding-top: 0;
+	}
+	#hodophile_we_have .we-have-wrapper {
+		padding: 40px 20px;
+		margin-top: -150px;
+		position: relative;
+	}
+}
+@media screen and (min-width: 992px) {
+	.col-4 .hentry  {
+        width: 25%;
+        float: left;
+    }
+    .col-5 .hentry {
+        width: 20%;
+        float: left;
+    }
+    .col-4 article {
+		width: 25%;
+	}
+	.col-5 article {
+		width: 20%;
+	}
+	.col-6 article {
+		width: 16.66%;
+	}
+	.col-5 article:nth-child(3n+1),
+	.col-6 article:nth-child(3n+1) {
+		clear: none;
+	}
+	.col-4 article:nth-last-child(-n+4),
+	.col-5 article:nth-last-child(-n+5),
+	.col-6 article:nth-last-child(-n+6) {
+		margin-bottom: 0;
+	}
+    #reply-title, 
+	.comments-title {
+    	font-size: 48px;
+    }
+    #page-site-header .page-title {
+		font-size: 62px;
+	}
+	.comment-form-author, 
+	.comment-form-email, 
+	.comment-form-url {
+	    width: 33.33%;
+	    float: left;
+	}
+	.footer-widgets-area.col-4 .hentry {
+	    width: 25%;
+		padding-right: 40px;
+	}
+	.footer-widgets-area.col-5 .hentry {
+		padding-right: 25px;
+	    width: 15%;
+	}
+	.footer-widgets-area.col-5 .hentry:first-child {
+		width: 31%;
+	}
+	.footer-widgets-area.col-5 .hentry:last-child {
+		width: 23%;
+	}
+	.footer-widgets-area.col-4 .hentry:last-child,
+	.footer-widgets-area.col-5 .hentry:last-child {
+		padding-right: 0;
+	}
+	.footer-widgets-area.col-4 .hentry:nth-child(2n+1) {
+	    clear: none;
+	}
+	.footer-widgets-area.col-4 .hentry:nth-child(4n+1) {
+	    clear: left;
+	}
+	.footer-widgets-area.col-4 .hentry:nth-last-child(-n+4),
+	.footer-widgets-area.col-5 .hentry:nth-last-child(-n+5) {
+		margin-bottom: 0;
+	}
+	.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+		width: 33.33%;
+	}
+	#hodophile_hero_banner .image.grid {
+		height: 530px !important;
+	}
+	#hodophile_hero_banner article {
+		padding: 200px 0;
+	}
+	#hodophile_hero_banner article:nth-child(1) {
+		clip-path: polygon(96% 0, 0 0, 0 85%);
+		top: 15px !important;
+	}
+	#hodophile_hero_banner article:nth-child(2) {
+		clip-path: polygon(100% -3%, 97% 0, 64% 100%, 0 100%, 0% 72%);
+		padding: 250px 0;
+		left: -7px !important;
+		top: 15px !important;
+	}
+	#hodophile_hero_banner article:nth-child(3) {
+		clip-path: polygon(0% 145%, 48% 0, 51% 0%, 84% 100%);
+		left: 0 !important;
+		top: 15px !important;
+		right: 0;
+		margin: 0 auto;
+		padding: 250px 0;
+	}
+	#hodophile_hero_banner article:nth-child(4) {
+		clip-path: polygon(3% 0, 3% 0, 100% 70%, 100% 100%, 36% 100%);
+		left: auto !important;
+		right: 0px;
+		top: 15px !important;
+		padding: 250px 0;
+	}
+	#hodophile_hero_banner article:nth-child(5) {
+		clip-path: polygon(0% 0, 100% 90%, 100% 0);
+		left: auto !important;
+		right: -30px;
+		top: 0 !important;
+		top: 15px !important;
+	}
+	#hodophile_hero_banner .image .entry-title {
+		position: absolute;
+		margin: 0;
+	}
+	#hodophile_hero_banner article:nth-child(1) .entry-title {
+		transform: rotate(0deg);
+	    top: 10%;
+	    right: 40%;
+	}
+	#hodophile_hero_banner article:nth-child(2) .entry-title {
+		transform: rotate(320deg);
+	    top: 300px;
+	    right: 0%;
+	    left: 20%;
+	    margin: auto;
+	}
+	#hodophile_hero_banner article:nth-child(3) .entry-title {
+		transform: rotate(90deg);
+		top: 50%;
+		right: 0;
+    	left: 0;
+	}
+	#hodophile_hero_banner article:nth-child(4) .entry-title {
+		transform: rotate(62deg);
+		top: 40%;
+		right: 44%;
+	}
+	#hodophile_hero_banner article:nth-child(5) .entry-title {
+		transform: rotate(0deg);
+		top: 28%;
+		right: 19%;
+	}
+	#hodophile_hero_banner .content {
+		margin-bottom: 60px;
+	}
+	#hodophile_hero_banner .discover-now {
+		position: absolute;
+		margin: 0;
+		bottom: -55%;
+		left: 35%;
+		z-index: 11;
+		border-radius: 50px;
+		border: 32px solid #141416;
+	}
+	.wp-travel-search form {
+		clear: both;
+		display: flex;
+		align-items: center;
+	}
+	#hodophile_subscription .widget-title {
+		margin-bottom: 0;
+	}
+	#hodophile_subscription .subscribe-wrapper {
+		display: flex;
+		align-items: center;
+		text-align: unset;
+	}
+	#hodophile_subscription .entry-container {
+		padding-right: 40px;
+	}
+	#hodophile_subscription .entry-container,
+	#hodophile_subscription form {
+		width: 50%;
+	}
+	#hodophile_latest_event .latest-event-wrapper {
+		display: inline-flex;
+		align-items: center;
+		width: 100%;
+	}
+	#hodophile_latest_event .posted-on,
+	#hodophile_latest_event .event-time,
+	#hodophile_latest_event .buy-ticket {
+		width: 20%;
+		margin-bottom: 0;
+	}
+	#hodophile_latest_event .entry-header {
+		width: 40%;
+		margin-bottom: 0;
+		text-align: left;
+	}
+	#hodophile_latest_event .entry-header img {
+		float: left;
+		margin: 0;
+		margin-right: 25px;
+	}
+	#hodophile_latest_event .entry-title {
+		display: table-cell;
+	}
+	.fourth-design .featured-content-wrapper .entry-content {
+		padding-right: 100px;
+	}
+}
+@media screen and (min-width: 1024px) {
+	.col-3 article{
+		width: 33.33%;
+	}
+	.col-3 article:nth-last-child(-n+3) {
+		margin-bottom: 0;
+	}
+	.menu-sticky #masthead {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 111;
+	}
+	.menu-sticky #masthead.nav-shrink {
+	    background-color: #111;
+	}
+	.main-navigation a:hover, 
+	.main-navigation a:focus, 
+	.main-navigation ul.nav-menu > li > a:hover, 
+	.main-navigation ul.nav-menu > li > a:focus {
+	    color: #FC5B31;
+	}
+	.main-navigation ul.nav-menu > li:hover > a,
+	.main-navigation ul.nav-menu > li:focus > a {
+		color: #FC5B31;
+	}
+	.main-navigation ul.nav-menu li:hover > svg, 
+	.main-navigation ul.nav-menu li:focus > svg, 
+	.main-navigation li.menu-item-has-children:hover > a > svg, 
+	.main-navigation li.menu-item-has-children > a:hover > svg, 
+	.main-navigation li.menu-item-has-children > a:focus > svg, 
+	.main-navigation ul.nav-menu > li.current-menu-item > a > svg {
+		fill: #FC5B31;
+	}
+	.main-navigation ul.nav-menu > li > a {
+		color: #fff;
+	}
+	.main-navigation ul.nav-menu > li.search-menu > a {
+		border-bottom: none;
+	}
+	.main-navigation ul.nav-menu > li.search-menu > a > svg {
+		fill: #fff;
+	}
+	.main-navigation ul.nav-menu > li > a.custom-button {
+	    background-color: #fff;
+	    color: #000;
+	    padding: 7px 20px;
+	    border-radius: 25px;
+	    border-bottom: none;
+	}
+	.main-navigation ul.nav-menu > li > a.custom-button:hover,
+	.main-navigation ul.nav-menu > li > a.custom-button:focus {
+		background-color: #FC5B31;
+		color: #fff;
+	}
+	#masthead .main-navigation {
+    	margin: 30px 0;
+	}
+	.main-navigation ul.nav-menu {
+		display: block !important;
+	    height: auto !important;
+	}
+	.main-navigation ul li:hover > ul,
+	.main-navigation ul li.focus > ul {
+		left: auto;
+		right: 0;
+	}
+	.main-navigation ul ul li:hover > ul,
+	.main-navigation ul ul li.focus > ul {
+		left: auto;
+		right: 100%;
+	}
+	.main-navigation ul ul ul {
+		top: 0;
+	}
+	.main-navigation ul.sub-menu li a {
+	    color: #fff;
+	    border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+	}
+	.main-navigation ul.nav-menu > li.user-logged-in > a {
+	    padding: 29px 0;
+	}
+	.main-navigation .menu-item-has-children > a:after {
+		float: none;
+	}
+	#masthead .main-navigation ul.sub-menu li:hover > a,
+	#masthead .main-navigation ul.sub-menu li:focus > a {
+		color: #fff;
+	}
+	.main-navigation .sub-menu svg {
+		fill: #fff;
+		right: 0;
+	    margin-top: 5px;
+	}
+	.main-navigation ul.sub-menu > li:last-child > a {
+		border-bottom: none;
+	}
+	#masthead .main-navigation .social-icons ul li a svg {
+	    fill: #000;
+	}
+	.main-navigation ul.nav-menu > li.social-menu {
+	    margin-left: 50px;
+	}
+	#search {
+	    position: absolute;
+	    z-index: 30;
+	    right: -6px;
+	    top: 100%;
+	    margin-top: 10px;
+	    display: none;
+	}
+	.main-navigation .search-active .icon-search {
+		display: none;
+	}
+	.main-navigation .search-active .icon-close {
+		display: inline-block;
+	}
+	.main-navigation ul.nav-menu > li.menu-item-has-children:hover > a:before {
+	    content: "";
+	    border-left: 10px solid transparent;
+	    border-right: 10px solid transparent;
+	    border-bottom: 10px solid #111;
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    width: 10px;
+	    height: 10px;
+	    margin: auto;
+	}
+	.main-navigation ul.nav-menu > li.menu-item-has-children:hover > a:after {
+		display: none;
+	}	
+	#masthead .main-navigation ul ul li a svg {
+	    top: 14px;
+	    right: 15px;
+	    -webkit-transform: rotate(90deg);
+	    -moz-transform: rotate(90deg);
+	    -ms-transform: rotate(90deg);
+	    -o-transform: rotate(90deg);
+	    transform: rotate(90deg);
+	}
+	.main-navigation ul ul {
+	    background-color: #000;	
+	}
+	.main-navigation ul ul li a {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.second-design .main-navigation .login-register ul li a {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.main-navigation ul ul li.menu-item-has-children:hover > a > svg, 
+	.main-navigation ul ul li.menu-item-has-children > a:hover > svg {
+		fill: #fff;
+	}
+	#search:before {
+	    content: "";
+	    width: 0;
+	    height: 0;
+	    border-left: 9px solid transparent;
+	    border-right: 9px solid transparent;
+	    border-bottom: 9px solid #000;
+	    position: absolute;
+	    top: -9px;
+	    right: 20px;
+	}
+	button.dropdown-toggle {
+		display: none;
+	}
+	.menu-toggle {
+		display: none;
+	}
+	.main-navigation ul {
+		display: block;
+	}
+	.main-navigation li {
+	    display: inline-block;
+	}
+	.main-navigation .left-menu {
+	    padding-left: 50px;
+	}
+	.main-navigation ul.nav-menu > li.left-menu > a,
+	.main-navigation ul.nav-menu > li.right-menu > a {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.main-navigation li.left-menu + li.right-menu:before {
+	    content: "/";
+	    position: absolute;
+	    top: 50%;
+	    margin-left: -6px;
+	    color: #fff;
+	    margin-top: -1px;
+	    -webkit-transform: translateY(-50%);
+	    -moz-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	    -o-transform: translateY(-50%);
+	    transform: translateY(-50%);
+	}
+	.main-navigation form.search-form {
+	    border: 20px solid #000;
+	}
+	.main-navigation form.search-form input {
+	    background-color: #fff;
+	    border-color: #fff;
+	    color: #000;
+	}
+	#masthead .wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.site-branding {
+		display: flex;
+		justify-content: start;
+		width: 25%;
+	}
+	#masthead .main-navigation {
+		display: flex;
+		justify-content: end;
+		width: 75%;
+	}
+	.page-section {
+		padding: 70px 0;
+	}
+	.same-background {
+		padding-top: 0;
+	}
+	.section-title {
+		font-size: 50px;
+	}
+	.featured-content-wrapper .entry-title {
+	    font-size: 62px;
+	}
+	#main-post-wrapper #left-sidebar {
+	    width: 23.5%;
+	    float: left;
+	}
+	#main-post-wrapper #primary {
+	    width: 53.5%;
+	    float: left;
+	    padding: 0 50px;
+	}
+	#main-post-wrapper .right-sidebar {
+	    width: 23%;
+	    float: left;
+	}
+	#contact-section form {
+        margin: 0 -10px;
+    }
+    #contact-section form p {
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+    #contact-section form p:nth-child(2),
+    #contact-section form p:nth-child(3),
+    #contact-section form p:nth-child(4) {
+        width: 33.33%;
+        float: left;
+    }
+	.archive-blog-wrapper.list-view article.has-post-thumbnail {
+		position: relative;
+		display: table;
+	}
+	.archive-blog-wrapper.list-view article.has-post-thumbnail .featured-image {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 50%;
+	    display: table-cell;
+	    padding: 0;
+	    height: 100%;
+	}
+	.archive-blog-wrapper.list-view article.has-post-thumbnail .entry-container {
+	    width: 50%;
+	    display: table-cell;
+	    float: right;
+	    text-align: left;
+	    padding: 30px;
+	}
+	.right-sidebar #primary,
+	.left-sidebar #primary,
+	#content-wrapper #primary {
+    	width: 75%;
+    	float: left;
+    	padding-right: 30px;
+    }
+    .right-sidebar #secondary,
+    .left-sidebar #secondary,
+    #content-wrapper #secondary {
+    	width: 25%;
+    	float: right;
+    	margin-top: 0;
+    }
+    .left-sidebar #primary { 
+    	float: right;
+    	padding-right: 0;
+    	padding-left: 30px;
+    }
+    .no-sidebar #primary {
+    	width: 100%;
+    	float: none;
+    	padding-right: 0;
+    }
+    .no-sidebar-content.single-itineraries #inner-content-wrapper {
+    	max-width: 100%;
+    }
+    .boxed-layout #page {
+	    max-width: 1250px;
+	    margin-left: auto;
+	    margin-right: auto;
+        background-color: #fff;
+	}
+	.frame-layout {
+	    max-width: 100%;
+	    width: 100%;
+	    padding-left: 50px;
+	    padding-right: 50px;
+	    margin: 50px auto;
+	}
+	.frame-layout #page {
+        background-color: #fff;
+	}
+	.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+		width: 22%;
+	}
+	#hodophile_hero_banner .entry-title {
+		font-size: 48px;
+	}
+	#hodophile_hero_banner .entry-content {
+		padding: 0 80px;
+	}
+	#hodophile_about_section .entry-title,
+	#hodophile_featured_section .entry-title,
+	#hodophile_about_section .counter-value,
+	#hodophile_about_section .counter-value {
+		font-size: 38px;
+	}
+	#hodophile_about_section .experience-wrapper,
+	#hodophile_featured_section .download-data-wrapper {
+		display: table;
+		position: relative;
+		align-items: center;
+		width: 100%;
+	}
+	#hodophile_about_section .featured-image,
+	#hodophile_featured_section .featured-image {
+		width: 50%;
+		position: absolute;
+		display: table-cell;
+		bottom: 0;
+		right: 0;
+		top: 0;
+		padding: 0;
+		margin: 0;
+	}
+	#hodophile_featured_section .featured-image {
+		left: 0;
+	}
+	#hodophile_about_section .entry-container,
+	#hodophile_featured_section .entry-container {
+		text-align: unset;
+		width: 50%;
+		display: table-cell;
+		padding: 40px 45px 40px 0;
+	}
+	#hodophile_featured_section .entry-container {
+		padding: 90px 0 90px 70px;
+	}
+	#hodophile_about_section .counter-title {
+		max-width: 140px;
+	}
+	#hodophile_gallery_section .view-more {
+		position: absolute;
+		top: -85px;
+		right: 70px;
+		margin: 0;
+		text-align: unset;
+	}
+	#hodophile_hero_banner article:nth-child(5) {
+		right: -40px;
+	}
+	#hodophile_hero_banner .discover-now {
+		bottom: -42%;
+	}
+	#hodophile_slider_section article {
+		padding: 220px 0;
+	}
+	#hodophile_timer #timer div {
+		font-size: 72px;
+	}
+	#hodophile_timer #timer div:not(:last-child) {
+		margin-right: 60px;
+	}
+	#hodophile_medical_product .product-wrapper ul li {
+		width: 25%;
+		padding: 0 15px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	#masthead .main-navigation li.header-button {
+		padding-left: 90px;
+	}
+	#hodophile_hero_banner .entry-content {
+		padding: 0 110px;
+	}
+	#hodophile_about_section .entry-title,
+	#hodophile_featured_section .entry-title,
+	#hodophile_about_section .counter-value {
+		font-size: 48px;
+	}
+	#hodophile_gallery_section ul li:nth-child(1) {
+		width: 25%;
+		margin-left: -240px;
+	}
+	#hodophile_gallery_section ul li,
+	#hodophile_gallery_section ul.second-gallery li {
+		width: 40%;
+	}
+	#hodophile_gallery_section ul li:nth-child(4) {
+		margin-right: -230px;
+	}
+	#hodophile_gallery_section ul.second-gallery li:nth-child(4) {
+		width: 25%;
+	}
+	#hodophile_hero_banner .content {
+    	margin-bottom: 34px;
+	}
+	#hodophile_hero_banner .discover-now {
+		bottom: -30%;
+		left: 39%;
+	}
+	#hodophile_hero_banner .image.grid {
+		height: 730px !important;
+	}
+	#hodophile_hero_banner article {
+		padding: 300px 0;
+	}
+	#hodophile_hero_banner article:nth-child(1) {
+		    clip-path: polygon(96% 0%, 0 0, 0 0, 0 81%);
+	}
+	#hodophile_hero_banner article:nth-child(5) {
+		clip-path: polygon(2% 0, 100% 84%, 100% 0%);
+	}
+	#hodophile_hero_banner article:nth-child(2) {
+		padding: 350px 0;
+		clip-path: polygon(100% 0%, 100% 0, 64% 100%, 0 100%, 0% 73%);
+	}
+	#hodophile_hero_banner article:nth-child(3) {
+		padding: 350px 0;
+		clip-path: polygon(0% 142%, 51% 0, 53% 0%, 84% 100%);
+	}
+	#hodophile_hero_banner article:nth-child(4) {
+		padding: 350px 0;
+		clip-path: polygon(5% 0, 5% 0, 100% 70%, 100% 100%, 36% 100%);
+	}
+
+	#hodophile_hero_banner article:nth-child(4) .entry-title {
+		transform: rotate(47deg);
+		right: 37%;
+	}
+	#hodophile_hero_banner article:nth-child(5) .entry-title {
+		top: 10%;
+		right: 12%;
+	}
+	#hodophile_timer #timer div:not(:last-child) {
+		margin-right: 90px;
+	}
+}
+
+@media screen and (min-width: 1900px) {
+	.wrapper {
+		max-width: 1430px;
+	}
+	.page-section {
+		padding: 90px 0;
+	}
+	.same-background {
+    	padding-top: 0;
+	}
+	#masthead .main-navigation li.header-button {
+		padding-left: 200px;
+	}
+	.footer-widgets-area.page-section.col-4 .hentry {
+	    width: 24%;
+	}
+	.footer-widgets-area.page-section.col-4 .hentry:first-child {
+	    width: 28%;
+	}
+	.boxed-layout #page {
+	    max-width: 1500px;
+	    width: 90%;
+	}
+	.frame-layout {
+	    padding-left: 70px;
+	    padding-right: 70px;
+	    margin: 70px auto;
+	    max-width: 1600px;
+	}
+	.section-title {
+		font-size: 60px;
+	}
+
+	#hodophile_hero_banner .content {
+		margin-top: 120px;
+	}
+	#hodophile_popular_destination_section .entry-title,
+	#hodophile_blog_section .entry-title,
+	#hodophile_testimonial_section .entry-title,
+	.widget-title, #colophon h2,
+	#hodophile_popular_destination_section .trip-price ins > span {
+		font-size: 30px;
+	}
+	#hodophile_about_section .entry-title,
+	#hodophile_featured_section .entry-title {
+		font-size: 60px;
+	}
+	#hodophile_about_section .counter-value {
+		font-size: 60.2px;
+	}
+	#hodophile_featured_section .entry-container {
+		padding: 100px 0 100px 80px;
+	}
+	#hodophile_get_started .section-header {
+		max-width: 950px;
+	}
+	.textwidget {
+    	padding-right: 85px;
+	}
+	#hodophile_gallery_section .view-more {
+		right: 250px;
+	}
+	#hodophile_hero_banner article:nth-child(5) {
+		right: -80px;
+		clip-path: polygon( 100% 0%, 0% 0%, 0% 0%, 100% 86%);
+	}
+	#hodophile_hero_banner .discover-now {
+		left: 42.5%;
+	}
+
+	#hodophile_hero_banner article:nth-child(4) .entry-title {
+		max-width: 400px;
+	    right: 0;
+	    top: 300px;
+	    left: 15%;
+	}
+	#hodophile_hero_banner article:nth-child(5) .entry-title {
+		top: 10%;
+		left: 10%;
+	}
+	#hodophile_slider_section article {
+		padding: 250px 0;
+	}
+	#hodophile_latest_event .entry-title {
+		padding-top: 15px;
+	}
+}
+
+@media screen and (max-width: 1023px) {
+	.site-logo img {
+	    max-height: 60px;
+	}
+	.site-branding {
+		min-height: auto;
+	}
+	.site-title {
+		font-size: 26px;
+	}
+	.main-navigation a {
+	    border-bottom: 1px solid #eee;
+	}
+	.main-navigation ul.nav-menu > li {
+		padding: 0;
+	}
+	.main-navigation ul ul a {
+	    width: 100%;
+	}
+	.main-navigation ul.nav-menu li.current-menu-item > a, 
+	.main-navigation ul.nav-menu li:hover > a, 
+	.main-navigation ul.nav-menu li:focus > a,
+	.main-navigation ul.nav-menu > li > a {
+		color: #000;
+	}
+	.main-navigation ul ul,
+	.main-navigation ul ul ul {
+	    box-shadow: none;
+	    float: none;
+	    position: relative;
+	    top: 0;
+	    left: 0;
+	    margin-bottom: 0;
+	    display: none;
+	}
+	.main-navigation ul.sub-menu li {
+	    padding-right: 0;
+	}
+	.main-navigation .menu-item-has-children > a:before {
+	    content: "";
+	    float: right;
+	    position: relative;
+	    right: 25px;
+	    background-color: #ccc;
+	    width: 1px;
+	    height: 25px;
+	}
+	.main-navigation .menu-item-has-children > a:after {
+	    padding-top: 3px;
+	}
+	.main-navigation ul.nav-menu > li > a,
+	.main-navigation ul.sub-menu li a,
+	.main-navigation .header-button ul {
+	    padding: 15px 15px 15px 25px;
+	}
+	.main-navigation .header-button ul li {
+		padding: 0 15px;
+	}
+	.main-navigation ul.sub-menu li a {
+		padding-left: 50px;
+	}
+	.main-navigation ul.sub-menu ul li a {
+		padding-left: 75px;
+	}
+	.main-navigation ul.sub-menu ul ul li a {
+		padding-left: 100px;
+	}
+	.main-navigation ul.sub-menu ul ul ul li a {
+		padding-left: 125px;
+	}
+	.main-navigation .menu-item-has-children a svg {
+		display: none;
+	}
+	.main-navigation ul.sub-menu li a {
+		border-left: none;
+	}
+	.main-navigation ul.nav-menu {
+	    margin-right: 0;
+	    background-color: #fff;
+	    margin-top: 25px;
+	}
+	.main-navigation {
+		position: static;
+	}
+	.main-navigation a {
+		color: #000;
+	}
+	.main-navigation svg.icon-search,
+	.main-navigation svg.icon-down {
+		fill: #fff;
+	    margin-top: -5px;
+	}
+	.main-navigation ul.sub-menu {
+		border: none;
+	}
+	.menu-open .menu-toggle .icon-close {
+		display: block;
+		width: 20px;
+    	height: 20px;
+	}
+	.main-navigation ul.nav-menu {
+	    margin-top: 0;
+	    position: absolute;
+	    top: 100%;
+	    left: auto;
+	    right: 0;
+	    width: 100%;
+	}
+	.main-navigation .search-menu a {
+	    display: none;
+	}
+	.main-navigation form.search-form input {
+	    background-color: #fff;
+	    border: none;
+	    min-height: 55px;
+	}
+	.main-navigation form.search-form button.search-submit {
+		height: 55px;
+	}
+	.menu-open #search {
+	    display: block !important;
+	}
+	.main-navigation .social-menu ul li.search-menu,
+	.main-navigation .login-register ul li.search-menu {
+		width: 100%;
+		padding: 0;
+	}
+	.main-navigation .social-menu ul li,
+	.main-navigation .login-register ul li {
+    	padding: 10px 0 10px 25px;
+	}
+	.main-navigation form.search-form input {
+		padding-left: 25px;
+	}
+	.main-navigation .sub-menu svg {
+		-webkit-transform: rotate(0);
+		-moz-transform: rotate(0);
+		-ms-transform: rotate(0);
+		-o-transform: rotate(0);
+		transform: rotate(0);
+	}
+	.main-navigation button.dropdown-toggle:hover svg,
+	.main-navigation button.dropdown-toggle:focus svg {
+		fill: #fff;
+	}
+	.menu-toggle {
+	    background-color: #000;
+	}
+	.main-navigation .header-button ul a {
+		color: #000;
+	}
+	#primary {
+		margin-bottom: 60px;
+	}
+	.site-branding {
+		padding: 30px 0;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	#main-post-wrapper #primary {
+	    margin: 50px 0;
+	}
+	.single-wrapper .entry-title,
+	.comments-title, 
+	#reply-title {
+	    font-size: 28px;
+	}
+	.navigation.post-navigation a, 
+	.navigation.posts-navigation a {
+		font-size: 18px;
+	}
+	#hodophile_department .entry-title,
+	#hodophile_we_have .entry-title {
+		font-size: 20px;
+	}
+	.wp-travel-search p:not(:last-child) {
+		margin-bottom: 20px;
+	}
+}
+@media screen and (max-width: 767px) {
+	#masthead.site-header .main-navigation ul.nav-menu {
+		max-width: 100%;
+	}
+	.comment-navigation .nav-previous, 
+	.posts-navigation .nav-previous, 
+	.post-navigation .nav-previous,
+	.comment-navigation .nav-next, 
+	.posts-navigation .nav-next, 
+	.post-navigation .nav-next {
+		width: 100%;
+	}
+	.post-navigation span.previous-article b, 
+	.post-navigations span.previous-article b, 
+	.post-navigation span.next-article b, 
+	.post-navigations span.next-article b {
+		font-size: 18px;
+	}
+	.pagination .page-numbers,
+	.pagination .page-numbers.dots:hover,
+	.pagination .page-numbers.dots:focus,
+	.pagination .page-numbers.prev,
+	.pagination .page-numbers.next {
+		margin-bottom: 7px;
+	}
+	.navigation.post-navigation a, 
+	.navigation.posts-navigation a {
+		font-size: 16px;
+	}
+	#respond {
+		margin-top: 0;
+	}
+	#commentform p.comment-form-comment,
+	#commentform p.form-submit {
+		margin-top: 21px;
+	}
+	nav.navigation.pagination,
+	#secondary {
+		margin-top: 30px;
+	}
+	.single-wrapper .entry-title,
+	.comments-title, 
+	#reply-title {
+	    font-size: 26px;
+	}
+	#comments {
+	    margin-top: 40px;
+	}
+	.navigation.post-navigation .nav-previous + .nav-next, 
+	.navigation.posts-navigation .nav-previous + .nav-next {
+		padding-top: 0;
+	}
+	.navigation.post-navigation .nav-previous + .nav-next svg, 
+	.navigation.posts-navigation .nav-previous + .nav-next svg {
+		top: 10px;
+	}
+	#hodophile_recent_post .col-3 article:last-child,
+	#hodophile_we_have .col-3 article:last-child {
+		clear: left;
+	}
+}
+@media screen and (max-width: 567px) {
+	.woocommerce #hodophile_medical_product ul.products li.product{
+		width: 100%;
+	}
+	.menu-toggle svg.icon-menu {
+	    width: 25px;
+	    height: 25px;
+	}
+	.menu-toggle {
+	    position: relative;
+	    top: 0;
+	    left: 0;
+	    z-index: 3000;
+	    text-align: center;
+	    float: none;
+		top: 0;
+		width: 70px;
+	    min-width: 70px;
+	    padding: 0;
+		transform: none;
+	}
+	.menu-toggle span {
+		display: none;
+	}
+	.main-navigation .menu-toggle svg {
+		margin-right: 0;
+	}
+	.site-logo img {
+	    margin-right: 10px;
+	}
+	.site-description {
+	    font-size: 14px;
+	}
+	.menu-toggle svg.icon-close {
+	    width: 16px;
+	    height: 16px;
+	}
+	.site-title {
+	    font-size: 22px;
+	}
+	#page-site-header {
+	    padding: 200px 0;
+	}
+	#page-site-header .page-title {
+		font-size: 32px;
+	}
+	.pagination .page-numbers.prev, 
+	.pagination .page-numbers.next {
+		top: 0;
+	}
+	.pagination .prev.page-numbers:before, 
+	.pagination .next.page-numbers:before {
+		width: 35px;
+		height: 10px;
+	}
+	.site-main .comment-navigation, 
+	.site-main .posts-navigation, 
+	.site-main .post-navigation {
+		margin-top: 25px;
+	}
+	.single-wrapper .comments-title {
+	    margin-bottom: 0;
+	}
+	.single-wrapper #reply-title {
+	    margin-bottom: 25px;
+	}
+	.comment-metadata {
+	    float: none;
+	    padding-right: 0;
+	}
+	.comment-content {
+	    padding: 25px;
+	    margin-left: 20px;
+        margin-top: 30px;
+	}
+	.comment-meta .fn {
+		padding-left: 0;
+	}
+	.comment-meta img {
+		margin-top: 0;
+	}
+	#comments ol.children .comment-metadata {
+	    padding-right: 90px;
+	}
+	#comments ol.children .comment-content {
+		margin-right: 0;
+	}
+	.comment-content:before {
+	    border-right-color: transparent;
+	    border-bottom-color: #f5f5f3;
+	    left: 20px;
+	    top: -18px;
+	}
+	#comments ol.children .comment-content:before {
+	    border-right-color: transparent;
+    	border-bottom-color: #f5f5f3;
+	}
+	blockquote.alignright {
+		margin-left: 0;
+	}
+	.footer-widgets-area .hentry:last-child,
+	.footer-widgets-area.col-3 .hentry:last-child {
+		margin-bottom: 0;
+	    padding-right: 0;
+	}
+	.footer-widgets-area {
+	    text-align: center;
+	}
+	#hodophile_featured_section .discover-now a:not(:last-child) img {
+		margin-bottom: 20px;
+	}
+}
+
+
+@media screen and (max-width: 567px) {
+	.wp-block-section.header-media{
+		min-height: 300px;
+	}
+}

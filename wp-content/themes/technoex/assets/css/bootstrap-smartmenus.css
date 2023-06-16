@@ -1,0 +1,17 @@
+.site-branding-text .site-title {
+    line-height: 1.5;
+}
+.navbar.header-fixed-top .site-branding-text {
+    margin-top: 0.4rem;
+    margin-bottom: 0.380rem;
+}
+.navbar .nav .menu-item .nav-link {
+    text-transform: capitalize;
+}
+.navbar .nav .menu-item .dropdown-item {
+    text-transform: capitalize;
+}
+.navbar .nav .menu-item .nav-link,
+.navbar .nav .menu-item .dropdown-item {
+    letter-spacing: 1px;
+}
